@@ -862,6 +862,10 @@ background-color: var(--bgColor);
 
 /* ////////////////// */
 /* Pagination */
+.Pagination a {
+  text-decoration: none;
+  color: inherit;
+}
 .Pagination {
   padding: 70px 0;
   display: flex;

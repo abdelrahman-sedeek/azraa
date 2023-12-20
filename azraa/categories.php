@@ -68,184 +68,163 @@
 </section>
 
 <!-- Categorie -->
-<section class="Categorie product">
-<div class="container">
-    <div class="intro">
-        <input type="text" placeholder="ابحث عن منتج">
-        <button><i class="fa-solid fa-magnifying-glass"></i></button>
-    </div>
-<div class="row">
+    <section class="Categorie product">
+        <div class="container">
+                 <div class="intro">
+                    <input type="text" placeholder="ابحث عن منتج">
+                    <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+        <div class="row">
 
-<div class="ssaa ">
-    <div class="box">
-        <img src="./img/offers_1.jpg" alt="">
-        <a href="./single_product.php">1 كيلو سكر ابيض صافي</a>
-        <span> 10جم بدلا من <del>20جم</del> </span>
-        <button onclick="addtoChose()"  class="add-to-cart"> اضف الي العربه <i class="fa-solid fa-cart-shopping"></i> </button>
-    </div>
-</div>    
+            <div class="ssaa ">
+                <div class="box">
+                    <img src="./img/offers_1.jpg" alt="">
+                    <a href="./single_product.php">1 كيلو سكر ابيض صافي</a>
+                    <span> 10جم بدلا من <del>20جم</del> </span>
+                    <button onclick="addtoChose()"  class="add-to-cart"> اضف الي العربه <i class="fa-solid fa-cart-shopping"></i> </button>
+                </div>
+            </div>    
 
-<div class="ssaa ">
-    <div class="box">
-        <img src="./img/offers_1.jpg" alt="">
-        <a href="./single_product.php">1 كيلو سكر ابيض صافي</a>
-        <span> 10جم بدلا من <del>20جم</del> </span>
-        <button onclick="addtoChose()"  class="add-to-cart"> اضف الي العربه <i class="fa-solid fa-cart-shopping"></i> </button>
-    </div>
-</div>
+            <div class="ssaa ">
+                <div class="box">
+                    <img src="./img/offers_1.jpg" alt="">
+                    <a href="./single_product.php">1 كيلو سكر ابيض صافي</a>
+                    <span> 10جم بدلا من <del>20جم</del> </span>
+                    <button onclick="addtoChose()"  class="add-to-cart"> اضف الي العربه <i class="fa-solid fa-cart-shopping"></i> </button>
+                </div>
+            </div>
 
-<div class="ssaa  ">
-    <div class="box">
-        <img src="./img/offers_1.jpg" alt="">
-        <a href="./single_product.php">1 كيلو سكر ابيض صافي</a>
-        <span> 10جم بدلا من <del>20جم</del> </span>
-        <button onclick="addtoChose()"  class="add-to-cart"> اضف الي العربه <i class="fa-solid fa-cart-shopping"></i> </button>
-    </div>
-</div>
+            <div class="ssaa  ">
+                <div class="box">
+                    <img src="./img/offers_1.jpg" alt="">
+                    <a href="./single_product.php">1 كيلو سكر ابيض صافي</a>
+                    <span> 10جم بدلا من <del>20جم</del> </span>
+                    <button onclick="addtoChose()"  class="add-to-cart"> اضف الي العربه <i class="fa-solid fa-cart-shopping"></i> </button>
+                </div>
+            </div>
 
-<div class="ssaa  ">
-    <div class="box">
-        <img src="./img/offers_1.jpg" alt="">
-        <a href="./single_product.php">1 كيلو سكر ابيض صافي</a>
-        <span> 10جم بدلا من <del>20جم</del> </span>
-        <button onclick="addtoChose()"  class="add-to-cart"> اضف الي العربه <i class="fa-solid fa-cart-shopping"></i> </button>
-    </div>
-</div>
+            <div class="ssaa  ">
+                <div class="box">
+                    <img src="./img/offers_1.jpg" alt="">
+                    <a href="./single_product.php">1 كيلو سكر ابيض صافي</a>
+                    <span> 10جم بدلا من <del>20جم</del> </span>
+                    <button onclick="addtoChose()"  class="add-to-cart"> اضف الي العربه <i class="fa-solid fa-cart-shopping"></i> </button>
+                </div>
+            </div>
 
-<div class="ssaa">
-    <div class="box">
-        <img src="./img/offers_1.jpg" alt="">
-        <a href="./single_product.php">1 كيلو سكر ابيض صافي</a>
-        <span> 10جم بدلا من <del>20جم</del> </span>
-        <button onclick="addtoChose()"  class="add-to-cart"> اضف الي العربه <i class="fa-solid fa-cart-shopping"></i> </button>
-    </div>
-</div>
+            <div class="ssaa">
+                <div class="box">
+                    <img src="./img/offers_1.jpg" alt="">
+                    <a href="./single_product.php">1 كيلو سكر ابيض صافي</a>
+                    <span> 10جم بدلا من <del>20جم</del> </span>
+                    <button onclick="addtoChose()"  class="add-to-cart"> اضف الي العربه <i class="fa-solid fa-cart-shopping"></i> </button>
+                </div>
+            </div>
 
-<div class="ssaa">
-    <div class="box">
-        <img src="./img/offers_1.jpg" alt="">
-        <a href="./single_product.php">1 كيلو سكر ابيض صافي</a>
-        <span> 10جم بدلا من <del>20جم</del> </span>
-        <button onclick="addtoChose()" class="add-to-cart"> اضف الي العربه <i class="fa-solid fa-cart-shopping"></i>
-        </button>
-    </div>
-</div>
+            <div class="ssaa">
+                <div class="box">
+                    <img src="./img/offers_1.jpg" alt="">
+                    <a href="./single_product.php">1 كيلو سكر ابيض صافي</a>
+                    <span> 10جم بدلا من <del>20جم</del> </span>
+                    <button onclick="addtoChose()" class="add-to-cart"> اضف الي العربه <i class="fa-solid fa-cart-shopping"></i>
+                    </button>
+                </div>
+            </div>
 
-<div class="ssaa">
-    <div class="box">
-        <img src="./img/offers_1.jpg" alt="">
-        <a href="./single_product.php">1 كيلو سكر ابيض صافي</a>
-        <span> 10جم بدلا من <del>20جم</del> </span>
-        <button onclick="addtoChose()" class="add-to-cart"> اضف الي العربه <i class="fa-solid fa-cart-shopping"></i>
-        </button>
-    </div>
-</div>
+            <div class="ssaa">
+                <div class="box">
+                    <img src="./img/offers_1.jpg" alt="">
+                    <a href="./single_product.php">1 كيلو سكر ابيض صافي</a>
+                    <span> 10جم بدلا من <del>20جم</del> </span>
+                    <button onclick="addtoChose()" class="add-to-cart"> اضف الي العربه <i class="fa-solid fa-cart-shopping"></i>
+                    </button>
+                </div>
+            </div>
 
-<div class="ssaa">
-    <div class="box">
-        <img src="./img/offers_1.jpg" alt="">
-        <a href="./single_product.php">1 كيلو سكر ابيض صافي</a>
-        <span> 10جم بدلا من <del>20جم</del> </span>
-        <button onclick="addtoChose()" class="add-to-cart"> اضف الي العربه <i class="fa-solid fa-cart-shopping"></i>
-        </button>
-    </div>
-</div>
+            <div class="ssaa">
+                <div class="box">
+                    <img src="./img/offers_1.jpg" alt="">
+                    <a href="./single_product.php">1 كيلو سكر ابيض صافي</a>
+                    <span> 10جم بدلا من <del>20جم</del> </span>
+                    <button onclick="addtoChose()" class="add-to-cart"> اضف الي العربه <i class="fa-solid fa-cart-shopping"></i>
+                    </button>
+                </div>
+            </div>
 
-<div class="ssaa">
-    <div class="box">
-        <img src="./img/offers_1.jpg" alt="">
-        <a href="./single_product.php">1 كيلو سكر ابيض صافي</a>
-        <span> 10جم بدلا من <del>20جم</del> </span>
-        <button onclick="addtoChose()" class="add-to-cart"> اضف الي العربه <i class="fa-solid fa-cart-shopping"></i>
-        </button>
-    </div>
-</div>
+            <div class="ssaa">
+                <div class="box">
+                    <img src="./img/offers_1.jpg" alt="">
+                    <a href="./single_product.php">1 كيلو سكر ابيض صافي</a>
+                    <span> 10جم بدلا من <del>20جم</del> </span>
+                    <button onclick="addtoChose()" class="add-to-cart"> اضف الي العربه <i class="fa-solid fa-cart-shopping"></i>
+                    </button>
+                </div>
+            </div>
 
-<div class="ssaa">
-    <div class="box">
-        <img src="./img/offers_1.jpg" alt="">
-        <a href="./single_product.php">1 كيلو سكر ابيض صافي</a>
-        <span> 10جم بدلا من <del>20جم</del> </span>
-        <button onclick="addtoChose()" class="add-to-cart"> اضف الي العربه <i class="fa-solid fa-cart-shopping"></i>
-        </button>
-    </div>
-</div>
+            <div class="ssaa">
+                <div class="box">
+                    <img src="./img/offers_1.jpg" alt="">
+                    <a href="./single_product.php">1 كيلو سكر ابيض صافي</a>
+                    <span> 10جم بدلا من <del>20جم</del> </span>
+                    <button onclick="addtoChose()" class="add-to-cart"> اضف الي العربه <i class="fa-solid fa-cart-shopping"></i>
+                    </button>
+                </div>
+            </div>
 
-<div class="ssaa">
-    <div class="box">
-        <img src="./img/offers_1.jpg" alt="">
-        <a href="./single_product.php">1 كيلو سكر ابيض صافي</a>
-        <span> 10جم بدلا من <del>20جم</del> </span>
-        <button onclick="addtoChose()" class="add-to-cart"> اضف الي العربه <i class="fa-solid fa-cart-shopping"></i>
-        </button>
-    </div>
-</div>
+            <div class="ssaa">
+                <div class="box">
+                    <img src="./img/offers_1.jpg" alt="">
+                    <a href="./single_product.php">1 كيلو سكر ابيض صافي</a>
+                    <span> 10جم بدلا من <del>20جم</del> </span>
+                    <button onclick="addtoChose()" class="add-to-cart"> اضف الي العربه <i class="fa-solid fa-cart-shopping"></i>
+                    </button>
+                </div>
+            </div>
 
-<div class="ssaa">
-    <div class="box">
-        <img src="./img/offers_1.jpg" alt="">
-        <a href="./single_product.php">1 كيلو سكر ابيض صافي</a>
-        <span> 10جم بدلا من <del>20جم</del> </span>
-        <button onclick="addtoChose()" class="add-to-cart"> اضف الي العربه <i class="fa-solid fa-cart-shopping"></i>
-        </button>
-    </div>
-</div>
+            <div class="ssaa">
+                <div class="box">
+                    <img src="./img/offers_1.jpg" alt="">
+                    <a href="./single_product.php">1 كيلو سكر ابيض صافي</a>
+                    <span> 10جم بدلا من <del>20جم</del> </span>
+                    <button onclick="addtoChose()" class="add-to-cart"> اضف الي العربه <i class="fa-solid fa-cart-shopping"></i>
+                    </button>
+                </div>
+            </div>
 
-<div class="ssaa">
-    <div class="box">
-        <img src="./img/offers_1.jpg" alt="">
-        <a href="./single_product.php">1 كيلو سكر ابيض صافي</a>
-        <span> 10جم بدلا من <del>20جم</del> </span>
-        <button onclick="addtoChose()" class="add-to-cart"> اضف الي العربه <i class="fa-solid fa-cart-shopping"></i>
-        </button>
-    </div>
-</div>
+            <div class="ssaa">
+                <div class="box">
+                    <img src="./img/offers_1.jpg" alt="">
+                    <a href="./single_product.php">1 كيلو سكر ابيض صافي</a>
+                    <span> 10جم بدلا من <del>20جم</del> </span>
+                    <button onclick="addtoChose()" class="add-to-cart"> اضف الي العربه <i class="fa-solid fa-cart-shopping"></i>
+                    </button>
+                </div>
+            </div>
 
-<div class="ssaa">
-    <div class="box">
-        <img src="./img/offers_1.jpg" alt="">
-        <a href="./single_product.php">1 كيلو سكر ابيض صافي</a>
-        <span> 10جم بدلا من <del>20جم</del> </span>
-        <button onclick="addtoChose()" class="add-to-cart"> اضف الي العربه <i class="fa-solid fa-cart-shopping"></i>
-        </button>
-    </div>
-</div>
-
-<div class="ssaa">
-    <div class="box">
-        <img src="./img/offers_1.jpg" alt="">
-        <a href="./single_product.php">1 كيلو سكر ابيض صافي</a>
-        <span> 10جم بدلا من <del>20جم</del> </span>
-        <button onclick="addtoChose()" class="add-to-cart"> اضف الي العربه <i class="fa-solid fa-cart-shopping"></i>
-        </button>
-    </div>
-</div>
-
-<div class="ssaa">
-    <div class="box">
-        <img src="./img/offers_1.jpg" alt="">
-        <a href="./single_product.php">1 كيلو سكر ابيض صافي</a>
-        <span> 10جم بدلا من <del>20جم</del> </span>
-        <button onclick="addtoChose()" class="add-to-cart"> اضف الي العربه <i class="fa-solid fa-cart-shopping"></i>
-        </button>
-    </div>
-</div>
+            <div class="ssaa">
+                <div class="box">
+                    <img src="./img/offers_1.jpg" alt="">
+                    <a href="./single_product.php">1 كيلو سكر ابيض صافي</a>
+                    <span> 10جم بدلا من <del>20جم</del> </span>
+                    <button onclick="addtoChose()" class="add-to-cart"> اضف الي العربه <i class="fa-solid fa-cart-shopping"></i>
+                    </button>
+                </div>
+            </div>
 
 
 
 
 
-<div class="Pagination">
-    <h4>السابق</h4>
-    <h4 class="active">1</h4>
-    <h4>2</h4>
-    <h4>3</h4>
-    <h4>التالي</h4>
-</div>
 
 
-
-</div>    
+            <div class="Pagination">
+                <h4>السابق</h4>
+                <h4 class="active">1</h4>
+                <h4>2</h4>
+                <h4>3</h4>
+                <h4>التالي</h4>
+            </div>
+     </div>    
 </div>    
 </section>
 
