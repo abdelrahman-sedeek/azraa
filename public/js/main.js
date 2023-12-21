@@ -10,7 +10,7 @@ owl.owlCarousel({
     items:4, 
   // items change number for slider display on desktop
   
-    loop:true,
+    loop:false,
     margin:10,
     navigation: true,
     autoplay: true,
@@ -45,7 +45,7 @@ owl.owlCarousel({
     items:4, 
   // items change number for slider display on desktop
   
-    loop:true,
+    loop:false,
     margin:10,
     navigation: true,
     autoplay: true,
@@ -79,7 +79,7 @@ owl.owlCarousel({
     items:4, 
   // items change number for slider display on desktop
   
-    loop:true,
+    loop:false,
     margin:10,
     navigation: true,
     autoplay: true,

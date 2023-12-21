@@ -242,11 +242,11 @@
             <h3>رز مصري </h3>
             <div class="droduct_d_img">
             <img src="./img/offers_2.png" alt="">
-            <ul>
-                <li>صناعه مصريه</li>
+            <ul class="discription">
+                {{-- <li>صناعه مصريه</li>
                 <li>يحفظ في مكان جاف</li>
                 <li> تاريخالانتاج (2023-12-1) </li>
-                <li> مده الصلاحيه 5 شهور </li>
+                <li> مده الصلاحيه 5 شهور </li> --}}
             </ul>
             </div>
         </div>
@@ -254,9 +254,9 @@
     <div class="product_chose_container">
         <ul class="product_chose">
             <li class="right_side">
-                <h5> بعد الخصم : 19</h5>
-                <span> قبل الخصم : <del>25</del> </span>
-                <span> الوحده : 1 كيلو </span>
+                <h5></h5>
+                <span> قبل الخصم : <del></del> </span>
+                <span> </span>
             </li>
 
             <li class="product_Quntity">
@@ -267,54 +267,10 @@
         </ul>
     </div>   
 
-    <div class="product_chose_container">
-        <ul class="product_chose">
-            <li class="right_side">
-                <h5> بعد الخصم : 239</h5>
-                <span> قبل الخصم : <del>280</del> </span>
-                <span> الوحده : كرتونه </span>
-            </li>
     
-            <li class="product_Quntity">
-                <button>+</button>
-                <span>1</span>
-                <button>-</button>
-            </li>
-        </ul>
-    </div>
 
-    <div class="product_chose_container">
-        <ul class="product_chose">
-            <li class="right_side">
-                <h5> بعد الخصم : 570</h5>
-                <span> قبل الخصم : <del>600</del> </span>
-                <span> الوحده : شكاره 30 ك </span>
-            </li>
     
-            <li class="product_Quntity">
-                <button>+</button>
-                <span>1</span>
-                <button>-</button>
-            </li>
-        </ul>
-    </div>
-
-    <div class="product_chose_container">
-        <ul class="product_chose">
-            <li class="right_side">
-                <h5> بعد الخصم : 1015</h5>
-                <span> قبل الخصم : <del>1200</del> </span>
-                <span> الوحده : شكاره 60 ك </span>
-            </li>
-    
-            <li class="product_Quntity">
-                <button>+</button>
-                <span>1</span>
-                <button>-</button>
-            </li>
-        </ul>
-    </div>
-
+    <button    class="add-to-cart"> اضف الي العربه <i class="fa-solid fa-cart-shopping"></i> </button>
     </div>
 </div>
 </div>
@@ -330,6 +286,40 @@
 <script src="{{asset('/js/all.min.js')}}"></script>
 <script src="{{asset('/js/bootstrap.bundle.min.js')}}"></script>
 <script src="{{asset('/js/main.js')}}"></script>
+<script>
+    $(document).ready(function () {
+    // Attach a click event handler to each product item
+    $('.item').click(function () {
+        // Retrieve product details from data attributes
+        var productId = $(this).data('product-id');
+        var productName = $(this).data('product-name');
+        var productImage = $(this).data('product-image');
+        var productPrice = $(this).data('product-price');
+        var productDiscountedPrice = $(this).data('product-discounted-price');
+        var productUnit = $(this).data('product-unit');
+        var productDiscrption = $(this).data('product-discrption');
+
+        // Update the pop-up card with the retrieved data
+        updatePopupCard(productId, productName, productImage, productPrice, productDiscountedPrice, productUnit,productDiscrption);
+    });
+
+    // Function to update the pop-up card with product details
+    function updatePopupCard(id, name, image, price, discountedPrice,unit,productDiscrption) {
+        // Update your pop-up card elements with the fetched data
+        // Example:
+        $('.product_detals h3').text(name);
+        $('.product_detals img').attr('src', image);
+        $('.discription').text(productDiscrption);
+        $('.right_side h5').text('بعد الخصم: ' + discountedPrice);
+        $('.right_side span del').text(price);
+        $('.right_side span:last-child').text('الوحدة: ' + unit);
+
+       
+       
+        $('.popup-card').show();
+    }
+});
+</script>
 @livewireScripts
 </body>
 </html>

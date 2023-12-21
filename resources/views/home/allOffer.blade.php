@@ -40,7 +40,14 @@
                 @foreach ($offers as $product) 
                     
                     <div class="ssaa ">
-                        <div class="box">
+                        <div class="box item" 
+                        data-product-id="{{ $product->id }}"
+                        data-product-name="{{ $product->name }}"
+                        data-product-image="{{ asset('' . $product->image) }}"
+                        data-product-price="{{ $product->price }}"
+                        data-product-discounted-price="{{ $product->discounted_price }}"
+                        data-product-unit="{{ $product->unit }}"
+                        data-product-discrption="{{ $product->description }}">
                           
                             
                                 <img src="{{ asset(''.$product->image) }}" alt="">

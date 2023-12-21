@@ -28,8 +28,8 @@ class indexController extends Controller
                     ->orderBy('products.date_added', 'desc')
                     ->take(8)
                     ->get();
-        
-        return view('home.index',compact(['category','recentProducts','recentoffers']));
+         
+        return view('home.index',compact(['recentProducts','category','recentoffers']));
     }
     public function category($category_id, Request $request)
     {
@@ -123,7 +123,8 @@ public function single_product($product_id)
             $query->where('products.name', 'like', '%' . $search . '%');
             
         }
-        $recentAdded= $query->paginate(10);
+        $recentAdded= $query->take(20)->get();
+       
             return view('home.recentAdded',compact('recentAdded'));
     }
 }
