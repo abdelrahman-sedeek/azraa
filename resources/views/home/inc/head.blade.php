@@ -27,8 +27,8 @@
     </div>
 
     <div class="nav-links">
-        <a href="./index.php">الرئيسيه</a>
-        <a href="./categories.php">التصنيفات</a>
+        <a href="{{ route('index') }}">الرئيسيه</a>
+        <a href="{{ route('allCategory')  }}">التصنيفات</a>
         <a href="./Cart.php">العربه</a>
         <a href="./logIn.php">تسجيل دخول</a>
         <a href="./contact_us.php">تواصل معنا</a>
