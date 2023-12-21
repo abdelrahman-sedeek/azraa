@@ -17,3 +17,5 @@ use Illuminate\Support\Facades\Route;
 
 route::get('/',[indexController::class ,'index'])->name('index');
 route::get('/category/{category_id}',[indexController::class ,'category'])->name('category');
+route::get('/category/{category_id}/subcategory/{subcategory_id}',[indexController::class ,'subcategory'])->name('subcategory');
+route::get('/single-product/{product_id}',[indexController::class ,'single_product'])->name('single_product');
