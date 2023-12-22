@@ -286,6 +286,7 @@
 <script src="{{asset('/js/all.min.js')}}"></script>
 <script src="{{asset('/js/bootstrap.bundle.min.js')}}"></script>
 <script src="{{asset('/js/main.js')}}"></script>
+<script src="{{asset('/js/search.js')}}"></script>
 <script>
     $(document).ready(function () {
     // Attach a click event handler to each product item
@@ -319,6 +320,31 @@
         $('.popup-card').show();
     }
 });
+</script>
+<script>
+    $(document).ready(function () {
+    $('#search-input').on('keyup', function () {
+        var search = $(this).val();
+        
+        $.ajax({
+            type: 'GET',
+            url: '{{URL::to('/search-category')}}',
+            data: { search: search 
+            
+            },
+
+            success: function (data) {
+                // Update the UI with the search results
+                console.log('hi');
+                $('#search-results').html(data.output);
+            },
+            error: function (error) {
+                console.log( data.output);
+            }
+        });
+    });
+});
+
 </script>
 @livewireScripts
 </body>
