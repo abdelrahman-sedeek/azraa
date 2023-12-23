@@ -49,33 +49,54 @@
     <section class="Categorie product">
         <div class="container">
                  <div class="intro">
-                  
-                        <input id="search-input" type="text" name="search" placeholder="ابحث عن منتج">
-                        {{-- <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button> --}}
-                 
+                    <form action="{{ route('category',['category_id'=>$category->id]) }}" method="GET">
+                        <input id="search-input" value="{{ old('search') }}" type="text" name="search" placeholder="ابحث عن منتج">
+                        <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </form>
                 </div>
-        <div class="row">
-            <div id="search-results"></div>
-                @if ($products->total() > 10)
-                <div class="Pagination">
-                {{ $products->links('pagination::custom') }} 
-                </div>
-                
+            <div class="row">
+                @if ($products->isEmpty())
+                    
+                    <div class="col-md-12 text-center m-5">
+                        <h1>لا يوجد عروض</h1>
+                    </div>
+                @else
+                    @foreach ($products as $product) 
+                        
+                        <div class="ssaa ">
+                            <div class="box item" 
+                            data-product-id="{{ $product->product_id }}"
+                            data-product-name="{{ $product->name }}"
+                            data-product-image="{{ asset('' . $product->image) }}"
+                            data-product-price="{{ $product->price }}"
+                            data-product-discounted-price="{{ $product->discounted_price }}"
+                            data-product-unit="{{ $product->unit }}"
+                            data-product-branch-id="{{ $product->id }}"
+                            data-product-discrption="{{ $product->description }}"
+                            data-product-quantity="{{ $product->total_allowed_quantity }}">
+                            
+                                
+                                    <img src="{{ asset(''.$product->image) }}" alt="">
+                                    <a href="{{ route('single_product',['product_id'=>$product->product_id]) }}">{{ $product->name }}</a>
+                                    <span> {{ $product->discounted_price }}جم بدلا من <del>{{ $product->price }}جم</del> </span>
+                                    <button onclick="addtoChose()"   class="add-to-cart"> اضف الي العربه <i class="fa-solid fa-cart-shopping"></i> </button>
+                            
+                            </div>
+                        </div>    
+                    @endforeach
                 @endif
-            
-            
-        
+                {{-- <div id="search-results"></div> --}}
+                    @if ($products->total() > 10)
+                    <div class="Pagination">
+                    {{ $products->links('pagination::custom') }} 
+                    </div>
+                    
+                    @endif
+                
+                {{-- @livewire('productfilter', [ 'category' => $category->id]) --}}
 
-            {{-- @livewire('productfilter', [ 'category' => $category->id]) --}}
-
-
-
-
-
-
-
-     </div>    
-</div>    
+        </div>    
+    </div>    
 </section>
 
 

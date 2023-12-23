@@ -33,6 +33,9 @@ class indexController extends Controller
     }
     public function category($category_id, Request $request)
     {
+        $request->validate([
+            'search' => '',
+        ]);
         $category = Category::findOrFail($category_id);
        
         $query = DB::table('products')
@@ -124,6 +127,7 @@ public function single_product($product_id)
             
         }
         $recentAdded= $query->take(20)->get();
+        dd($recentAdded);
        
             return view('home.recentAdded',compact('recentAdded'));
     }

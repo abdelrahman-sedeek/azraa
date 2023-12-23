@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\indexController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\cartController;
 
 
 
@@ -32,3 +33,13 @@ route::get('/single-product/{product_id}',[indexController::class ,'single_produ
 route::get('/all-offers',[indexController::class ,'allOffer'])->name('allOffer');
 route::get('/recent-added',[indexController::class ,'recentAdded'])->name('recentAdded');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+// add to cart 
+Route::post('add-to-cart',[cartController::class, 'add'])->name('addToCart');
+Route::get('show-cart',[cartController::class,'show'])->name('showCart');
+Route::delete('delete-cart/{id}',[cartController::class, 'delete'])->name('deleteCart');
+
+// order
+Route::post('add-to-cart',[cartController::class, 'add'])->name('addToCart');
+Route::get('show-cart',[cartController::class,'show'])->name('showCart');
+Route::delete('delete-cart/{id}',[cartController::class, 'delete'])->name('deleteCart');

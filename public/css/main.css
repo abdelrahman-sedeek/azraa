@@ -387,8 +387,11 @@ background-color: var(--bgColor);
 .product .box img{
   border-radius: 5px;
   padding: 25px;
+  max-height: 255px;
+  min-height: 255px;
 }
 .product .box a{
+  display: block;
   color: var(--textColor);
   font-size: 16px;
   margin-bottom: 10px;
@@ -961,7 +964,7 @@ background-color: var(--bgColor);
   border: 2px solid var(--btnColor);
   border-radius: 5px;
 }
-.Add_to_Cart_chose .box .product_chose .product_Quntity button{
+.Add_to_Cart_chose .box .product_chose .product_Quntity a{
   padding: 5px 10px;
   background-color: var(--btnColor);
   color: var(--body_bgColor);

@@ -239,14 +239,11 @@
 
     <div class="box">
         <div class="product_detals">
-            <h3>رز مصري </h3>
+            <h3></h3>
             <div class="droduct_d_img">
-            <img src="./img/offers_2.png" alt="">
+            <img src="" alt="">
             <ul class="discription">
-                {{-- <li>صناعه مصريه</li>
-                <li>يحفظ في مكان جاف</li>
-                <li> تاريخالانتاج (2023-12-1) </li>
-                <li> مده الصلاحيه 5 شهور </li> --}}
+               
             </ul>
             </div>
         </div>
@@ -258,19 +255,25 @@
                 <span> قبل الخصم : <del></del> </span>
                 <span> </span>
             </li>
-
-            <li class="product_Quntity">
-                <button>+</button>
-                <span>1</span>
-                <button>-</button>
-            </li>
-        </ul>
+            <form action="{{ route('addToCart') }}" method="POST">
+                @csrf
+            
+                <li class="product_Quntity">
+                    <a type="button" id="up"  >+</a>
+                    <input type="number" name='quantity' value="0"  id="quantity">
+                    
+                    <a type="button" id="down" >-</a>
+                </li>
+            </ul>
+           
+ 
+            <input id="product_branches_id" value="" hidden  name='product_id'>
+            <input id="product_id"         value="" hidden   name='main_pro_id'>
     </div>   
 
-    
-
-    
-    <button    class="add-to-cart"> اضف الي العربه <i class="fa-solid fa-cart-shopping"></i> </button>
+    <button type="submit"   id="add-to-cart-btn"   class="add-to-cart"> اضف الي العربه <i class="fa-solid fa-cart-shopping"></i> </button>
+    <p id="error-message" style="color: red;"></p>     
+    </form>
     </div>
 </div>
 </div>
@@ -287,40 +290,8 @@
 <script src="{{asset('/js/bootstrap.bundle.min.js')}}"></script>
 <script src="{{asset('/js/main.js')}}"></script>
 <script src="{{asset('/js/search.js')}}"></script>
-<script>
-    $(document).ready(function () {
-    // Attach a click event handler to each product item
-    $('.item').click(function () {
-        // Retrieve product details from data attributes
-        var productId = $(this).data('product-id');
-        var productName = $(this).data('product-name');
-        var productImage = $(this).data('product-image');
-        var productPrice = $(this).data('product-price');
-        var productDiscountedPrice = $(this).data('product-discounted-price');
-        var productUnit = $(this).data('product-unit');
-        var productDiscrption = $(this).data('product-discrption');
 
-        // Update the pop-up card with the retrieved data
-        updatePopupCard(productId, productName, productImage, productPrice, productDiscountedPrice, productUnit,productDiscrption);
-    });
 
-    // Function to update the pop-up card with product details
-    function updatePopupCard(id, name, image, price, discountedPrice,unit,productDiscrption) {
-        // Update your pop-up card elements with the fetched data
-        // Example:
-        $('.product_detals h3').text(name);
-        $('.product_detals img').attr('src', image);
-        $('.discription').text(productDiscrption);
-        $('.right_side h5').text('بعد الخصم: ' + discountedPrice);
-        $('.right_side span del').text(price);
-        $('.right_side span:last-child').text('الوحدة: ' + unit);
-
-       
-       
-        $('.popup-card').show();
-    }
-});
-</script>
 <script>
     $(document).ready(function () {
     $('#search-input').on('keyup', function () {
@@ -345,6 +316,19 @@
     });
 });
 
+        
+        
+        
+    $(document).ready(function(){
+    $("#up").on('click',function(){
+      var  quantityElement= $(".product_Quntity input").val(parseInt($(".product_Quntity input").val())+1);
+    });
+
+    $("#down").on('click',function(){
+        quantityElement=  $(".product_Quntity input").val(parseInt($(".product_Quntity input").val())-1);
+    });
+   
+});
 </script>
 @livewireScripts
 </body>
