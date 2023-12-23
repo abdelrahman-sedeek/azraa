@@ -160,3 +160,78 @@ let Add_to_Cart_chose_container = document.getElementById("Add_to_Cart_chose_con
 close_chose.addEventListener("click", function () {
     Add_to_Cart_chose_container.classList.remove("Show_Cart_Chose")
 })
+
+
+var quantityElement = document.getElementById('quantity');
+var currentQuantity = parseInt(quantityElement.innerText);
+var quantityElement = document.getElementById('quantity');
+
+var addButton = document.getElementById('add-to-cart-btn');
+var errorMessage = document.getElementById('error-message');
+   
+   
+        $(document).ready(function () {
+           
+        // Attach a click event handler to each product item
+        $('.item').click(function () {
+            // Retrieve product details  data attributes
+            var productId = $(this).data('product-id');
+            var productBranchId =  $(this).data('product-branch-id')
+            var productName = $(this).data('product-name');
+            var productImage = $(this).data('product-image');
+            var productPrice = $(this).data('product-price');
+            var productDiscountedPrice = $(this).data('product-discounted-price');
+            var productUnit = $(this).data('product-unit');
+            var productDiscrption = $(this).data('product-discrption');
+            var alowedQuantity= $(this).data('product-quantity');
+            var stock= $(this).data('product-stock');
+            var measurement= $(this).data('product-measurement');
+            updatePopupCard(productId,productBranchId, productName, productImage, productPrice, productDiscountedPrice, productUnit,productDiscrption,stock,measurement);
+            updateQuantity( stock);
+           
+            
+        });
+            
+        
+
+        
+
+        // Function to update the pop-up card with product details
+        function updatePopupCard(productId,productBranchId, name, image, price, discountedPrice,unit,productDiscrption,stock,measurement) {
+            
+            $('.product_detals h3').text(name);
+            $('.product_detals img').attr('src', image);
+            $('.discription').text(productDiscrption);
+            $('.right_side h5').text('بعد الخصم: ' + discountedPrice);
+            $('.right_side span del').text(price);
+            $('.right_side span:last-child').text('الوحدة: ' + unit);
+            $('#product_id').val(productId);
+            $('#product_branches_id').val(productBranchId);
+    
+            
+        
+            $('.popup-card').show();
+            
+            console.log(productId);        
+            
+           
+        }
+        // quantity handling
+        function updateQuantity(stock) {
+            var quantityElement = $('#quantity');
+            var currentQuantity = parseInt(quantityElement.val());
+            console.log(stock)
+            console.log(currentQuantity)
+            if(currentQuantity>stock)
+                {
+                    errorMessage.text='Quantity not enough '
+                    console.log('Quantity not enough ')
+                }
+            
+        
+            quantityElement.text(currentQuantity);
+        }
+    });
+   
+    
+

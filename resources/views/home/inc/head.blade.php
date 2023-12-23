@@ -28,9 +28,16 @@
 
     <div class="nav-links">
         <a href="{{ route('index') }}">الرئيسيه</a>
+        @if (Auth()->user())
         <a href="{{ route('allCategory')  }}">التصنيفات</a>
-        <a href="./Cart.php">العربه</a>
-        <a href="./logIn.php">تسجيل دخول</a>
+        <a href="{{ route('showCart') }}">العربه</a>
         <a href="./contact_us.php">تواصل معنا</a>
+        <form action="{{ route('logout') }}" method="POST" style="display: inline;"  >
+            @csrf
+            <a  href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();" >تسجيل خروج</a>
+        </form>
+        @else
+        <a href="{{ route('login') }}">تسجيل دخول</a>
+        @endif
     </div>
 </div>
