@@ -204,20 +204,20 @@
                 </div>
     
                 <div class="col box_row_cart">
-                    <h5>1 كيلو سكر ابيض</h5>
+                    <h5 class="product-name">1 كيلو سكر ابيض</h5>
                 </div>
                 <div class="col ">
                     <div class="Qunte">
                         <button>+</button>
-                        <h6>1</h6>
+                        <h6 class="quantityCard">1</h6>
                         <button class="">-</button>
                     </div>
                     <hr>
-                    <h6 class="total_CArt">55ج/م</h6>
+                    <h6 class="total_CArt product-price ">55ج/م</h6>
                 </div>
     
                 <div class=" col ">
-                    <img src="./img/offers_2.png" alt="">
+                    <img class="product-image" src="./img/offers_2.png" alt="">
                 </div>
     
     
@@ -226,7 +226,7 @@
         </div>
     </div>
 
-<a class="add-to-cart mb-3 text-center" href="./Cart.php"> عربه التسوق </a>
+<a class="add-to-cart mb-3 text-center" href="{{ route('showCart') }}"> عربه التسوق </a>
 
 </div>
 </div>
@@ -240,6 +240,7 @@
     <div class="box">
         <div class="product_detals">
             <h3></h3>
+            
             <div class="droduct_d_img">
             <img src="" alt="">
             <ul class="discription">
@@ -253,26 +254,29 @@
             <li class="right_side">
                 <h5></h5>
                 <span> قبل الخصم : <del></del> </span>
-                <span> </span>
+                <span id='unit'> </span>
+                <span id="stock"> </span>
             </li>
-            <form action="{{ route('addToCart') }}" method="POST">
+            <form  id="addToCartForm" >
                 @csrf
             
                 <li class="product_Quntity">
                     <a type="button" id="up"  >+</a>
-                    <input type="number" name='quantity' value="0"  id="quantity">
+                    <input type="number"    name='quantity' value="1"  id="quantity">
                     
                     <a type="button" id="down" >-</a>
                 </li>
             </ul>
            
- 
+            
             <input id="product_branches_id" value="" hidden  name='product_id'>
             <input id="product_id"         value="" hidden   name='main_pro_id'>
-    </div>   
+            <p id="error-message" style="color: red;"></p>   
+            <p id="add-message" style="color: green;" class="  mt-3"></p>
+    
+        </div>   
 
-    <button type="submit"   id="add-to-cart-btn"   class="add-to-cart"> اضف الي العربه <i class="fa-solid fa-cart-shopping"></i> </button>
-    <p id="error-message" style="color: red;"></p>     
+    <button type="submit" onclick="validatePopUpForm()"  id="add-to-cart-btn"   class="add-to-cart"> اضف الي العربه <i class="fa-solid fa-cart-shopping"></i> </button>
     </form>
     </div>
 </div>
@@ -290,7 +294,10 @@
 <script src="{{asset('/js/bootstrap.bundle.min.js')}}"></script>
 <script src="{{asset('/js/main.js')}}"></script>
 <script src="{{asset('/js/search.js')}}"></script>
-
+<script src="{{asset('/js/ajax.js')}}"></script>
+<script type="text/javascript">
+   
+    </script>
 
 <script>
     $(document).ready(function () {
@@ -319,15 +326,21 @@
         
         
         
-    $(document).ready(function(){
-    $("#up").on('click',function(){
-      var  quantityElement= $(".product_Quntity input").val(parseInt($(".product_Quntity input").val())+1);
+$(document).ready(function(){
+    $("#up").on('click', function(){
+        var quantityElement = $("#quantity");
+        quantityElement.val(parseInt(quantityElement.val()) + 1);
     });
 
-    $("#down").on('click',function(){
-        quantityElement=  $(".product_Quntity input").val(parseInt($(".product_Quntity input").val())-1);
+    $("#down").on('click', function(){
+        var quantityElement = $("#quantity");
+        var currentValue = parseInt(quantityElement.val());
+
+        // Check if the current value is greater than 1 before decreasing it
+        if (currentValue > 1) {
+            quantityElement.val(currentValue - 1);
+        }
     });
-   
 });
 </script>
 @livewireScripts

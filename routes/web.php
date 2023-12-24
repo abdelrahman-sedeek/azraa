@@ -30,16 +30,19 @@ Route::middleware('auth')->group(function () {
     route::get('/category/{category_id}/subcategory/{subcategory_id}',[indexController::class ,'subcategory'])->name('subcategory');
     route::get('/all-offers',[indexController::class ,'allOffer'])->name('allOffer');
     route::get('/recent-added',[indexController::class ,'recentAdded'])->name('recentAdded');
+     //  cart 
     Route::post('add-to-cart',[cartController::class, 'add'])->name('addToCart');
     Route::get('show-cart',[cartController::class,'show'])->name('showCart');
+    Route::get('show-cart-ajax',[cartController::class,'show_ajax'])->name('showCartAjax');
     Route::delete('delete-cart/{id}',[cartController::class, 'delete'])->name('deleteCart');
+    Route::post('update-cart',[cartController::class, 'update'])->name('updateCart');
     
 });
 route::get('/home',[indexController::class ,'index'])->name('index');
 route::get('/single-product/{product_id}',[indexController::class ,'single_product'])->name('single_product');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-// add to cart 
+
 
 // cheakout
 Route::post('add-order',[checkoutController::class, 'add'])->name('addTorder');
