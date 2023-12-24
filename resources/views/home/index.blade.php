@@ -4,7 +4,7 @@
     <div class="container">
         <h1>ازرع للمنتجات</h1>
         <p>وداعا ل غلاء الاسعار اسعار الجمله توصلك لحد بيتك</p>
-        <a href="./categories.php"> تسوق معنا </a>
+        <a href="{{route('allCategory')}}"> تسوق معنا </a>
     </div>    
     </section>
     <!-- S2 home Categories-->

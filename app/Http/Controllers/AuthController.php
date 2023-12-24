@@ -7,6 +7,8 @@
  use Illuminate\Support\Facades\Auth;
  use Illuminate\Support\Facades\Hash;
  use Illuminate\Foundation\Auth\User as Authenticatable;
+ use Illuminate\Validation\Rule;
+
 class AuthController extends Controller 
 {
     public function register()
@@ -16,6 +18,17 @@ class AuthController extends Controller
  
     public function registerPost(Request $request)
     {
+        $validator = $request->validate([
+            'mobile' => [
+                'required',
+                'numeric',
+                'digits:11',
+                Rule::unique('users', 'mobile'), 
+            ],
+        ]);
+        // if ($validator->fails()) {
+        //     return back()->withErrors($validator)->withInput();
+        // }
         $user = new User();
         $user->name = 'test user';
         $user->longitude=0;
@@ -28,8 +41,9 @@ class AuthController extends Controller
         $user->type = 'ماركت';
  
         $user->save();
- 
-        return back()->with('success', 'Register successfully');
+        Auth::login($user);
+        return redirect()->route('index');
+
     }
  
     public function login()

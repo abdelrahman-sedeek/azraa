@@ -127,7 +127,7 @@ public function single_product($product_id)
             
         }
         $recentAdded= $query->take(20)->get();
-        dd($recentAdded);
+        // dd($recentAdded);
        
             return view('home.recentAdded',compact('recentAdded'));
     }

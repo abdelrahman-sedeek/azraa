@@ -5,9 +5,9 @@
         <h1>المنتج</h1>
         <p>صنف المنتجات حسب اختيارك</p>
         <ul>
-            <li> <a href="./index.php">الرئيسيه</a> </li>
+            <li> <a href="{{route('index')}}">الرئيسيه</a> </li>
             <li> / </li>
-            <li> <a href="./index.php">المنتج</a> </li>
+            <li> <a href="#">المنتج</a> </li>
         </ul>
     </div>
 </section>
@@ -22,7 +22,16 @@
     </div>
 
     <div class="col-lg-8">
-        <div class="box">
+        <div class="box item" 
+            data-product-id="{{ $product->product_id }}"
+            data-product-name="{{ $product->name }}"
+            data-product-image="{{ asset('' . $product->image) }}"
+            data-product-price="{{ $product->price }}"
+            data-product-branch-id="{{ $product->id }}"
+            data-product-discounted-price="{{ $product->discounted_price }}"
+            data-product-unit="{{ $product->unit }}" 
+            data-product-discrption="{{ $product->description }}"
+            data-product-quantity="{{ $product->total_allowed_quantity }}">
             <h3>{{ $product->name }}</h3>
             <span> {{ $product->discounted_price }} ج/م بدلا من <del>{{ $product->price }} جم</del> </span>
             <p> {{ $product->description }}</p>

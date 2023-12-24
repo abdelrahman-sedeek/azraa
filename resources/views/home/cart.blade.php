@@ -99,7 +99,7 @@
                             <h5>ج/م{{ $total }}</h5>
                         </div>
                     </div>
-                <a class="add-to-cart" href="./Checkout.php">اكمل الطلب</a>
+                <a class="add-to-cart" href="{{route('checkout')}}">اكمل الطلب</a>
 
             </div>
             @else

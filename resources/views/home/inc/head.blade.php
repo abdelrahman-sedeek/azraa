@@ -14,8 +14,8 @@
     <input type="checkbox" id="nav-check">
     <div class="nav-header">
         <div class="nav-logo">
-            <a class="nav_trans_logo" href="/index.php"><img src="{{asset('/img/logo.png')}}" alt=""></a>
-            <a class="Fixd_nav_logo" href=" /index.php"><img src="{{asset('/img/logo_fix.png')}}" alt=""></a>
+            <a class="nav_trans_logo" href="{{route('index')}}"><img src="{{asset('/img/logo.png')}}" alt=""></a>
+            <a class="Fixd_nav_logo" href="{{route('index')}}"><img src="{{asset('/img/logo_fix.png')}}" alt=""></a>
         </div>
     </div>
     <div class="nav-btn">

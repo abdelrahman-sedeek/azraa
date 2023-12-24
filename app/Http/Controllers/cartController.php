@@ -16,7 +16,10 @@ class cartController extends Controller
         $product_branches_id= $request->input('product_id');
         $user_id= auth()->id();
         $quantity=$request->input('quantity');
-        
+        // if($user_id==null)
+        //     {
+        //         return view('auth.login')
+        //     }
         $cart=Cart::updateOrCreate([
 
             'user_id'=>$user_id,

@@ -20,6 +20,15 @@
         <form action="{{ route('registerPost') }}" method="post" class="Login_form">
             @csrf
             <h3>أنشاء حساب</h3>
+                    @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
             <label for="">رقم الهاتف</label>
             <input name="mobile" type="text" placeholder="">
             <label  for="">كلمه السر</label>
