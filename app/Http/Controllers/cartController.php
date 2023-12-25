@@ -92,7 +92,11 @@ class cartController extends Controller
             ->where('carts.user_id', $user_id)
             ->select('carts.id', 'products.*', 'product_branches.*', 'carts.*')
             ->get();
-            return view('home.card',compact('cartItems'));
+        if($cartItems->count()==0)
+        {
+            $cartItems='لايوجد منتجات في العربة';
+        }
+            return response($cartItems);
         
     }
         

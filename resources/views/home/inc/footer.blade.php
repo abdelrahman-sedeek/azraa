@@ -68,67 +68,7 @@
         </div>
     </div>
 
-    <div class="row_In_Cart">
-        <div class="container">
-            <div class="row sm_style">
-                <hr>
-                <div class="col box_row_cart">
-                    <i class="fa-solid fa-trash-can"></i>
-                </div>
-
-                <div class="col box_row_cart">
-                    <h5>1 كيلو سكر ابيض</h5>
-                </div>
-                <div class="col ">
-                    <div class="Qunte">
-                        <button>+</button>
-                        <h6>1</h6>
-                        <button class="">-</button>
-                    </div>
-                    <hr>
-                    <h6 class="total_CArt">55ج/م</h6>
-                </div>
-
-                <div class=" col ">
-                    <img src="./img/offers_2.png" alt="">
-                </div>
-
-
-                <hr>
-            </div>
-        </div>
-    </div>
-
-    <div class="row_In_Cart">
-        <div class="container">
-            <div class="row sm_style">
-                <hr>
-                <div class="col box_row_cart">
-                    <i class="fa-solid fa-trash-can"></i>
-                </div>
-    
-                <div class="col box_row_cart">
-                    <h5>1 كيلو سكر ابيض</h5>
-                </div>
-                <div class="col ">
-                    <div class="Qunte">
-                        <button>+</button>
-                        <h6>1</h6>
-                        <button class="">-</button>
-                    </div>
-                    <hr>
-                    <h6 class="total_CArt">55ج/م</h6>
-                </div>
-    
-                <div class=" col ">
-                    <img src="./img/offers_2.png" alt="">
-                </div>
-    
-    
-                <hr>
-            </div>
-        </div>
-    </div>
+  
 
 
     <div class="row_In_Cart">
@@ -136,71 +76,8 @@
             <div class="row sm_style">
                 <hr>
                 <div class="col box_row_cart">
-                    <i class="fa-solid fa-trash-can"></i>
-                </div>
-    
-                <div class="col box_row_cart">
-                    <h5>1 كيلو سكر ابيض</h5>
-                </div>
-                <div class="col ">
-                    <div class="Qunte">
-                        <button>+</button>
-                        <h6>1</h6>
-                        <button class="">-</button>
-                    </div>
-                    <hr>
-                    <h6 class="total_CArt">55ج/م</h6>
-                </div>
-    
-                <div class=" col ">
-                    <img src="./img/offers_2.png" alt="">
-                </div>
-    
-    
-                <hr>
-            </div>
-        </div>
-    </div>
-
-    
-    <div class="row_In_Cart">
-        <div class="container">
-            <div class="row sm_style">
-                <hr>
-                <div class="col box_row_cart">
-                    <i class="fa-solid fa-trash-can"></i>
-                </div>
-    
-                <div class="col box_row_cart">
-                    <h5>1 كيلو سكر ابيض</h5>
-                </div>
-                <div class="col ">
-                    <div class="Qunte">
-                        <button>+</button>
-                        <h6>1</h6>
-                        <button class="">-</button>
-                    </div>
-                    <hr>
-                    <h6 class="total_CArt">55ج/م</h6>
-                </div>
-    
-                <div class=" col ">
-                    <img src="./img/offers_2.png" alt="">
-                </div>
-    
-    
-                <hr>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="row_In_Cart">
-        <div class="container">
-            <div class="row sm_style">
-                <hr>
-                <div class="col box_row_cart">
-                    <i class="fa-solid fa-trash-can"></i>
+                    <a href=""><i class="fa-solid fa-trash-can mx-3"></i></a>
+                    <a href=""><i class="fa-solid fa-pen"></i></a>
                 </div>
     
                 <div class="col box_row_cart">
@@ -295,6 +172,7 @@
 <script src="{{asset('/js/main.js')}}"></script>
 <script src="{{asset('/js/search.js')}}"></script>
 <script src="{{asset('/js/ajax.js')}}"></script>
+<script src="{{asset('/js/cart.js')}}"></script>
 <script type="text/javascript">
    
     </script>
