@@ -78,7 +78,7 @@
                 <div class="col cart_page_contant">
                     <form style="display: inline" action="{{ route('deleteCart',['id'=>$item->id]) }}" method="POST">
                         @csrf
-                        @method('DELETE')
+                       
 
                         <button type="submit" class=""> <i class="fa-solid fa-trash-can"></i> </button>
                     </form>
