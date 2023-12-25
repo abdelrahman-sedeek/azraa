@@ -71,36 +71,8 @@
   
 
 
-    <div class="row_In_Cart">
-        <div class="container">
-            <div class="row sm_style">
-                <hr>
-                <div class="col box_row_cart">
-                    <a href=""><i class="fa-solid fa-trash-can mx-3"></i></a>
-                    <a href=""><i class="fa-solid fa-pen"></i></a>
-                </div>
-    
-                <div class="col box_row_cart">
-                    <h5 class="product-name">1 كيلو سكر ابيض</h5>
-                </div>
-                <div class="col ">
-                    <div class="Qunte">
-                        <button>+</button>
-                        <h6 class="quantityCard">1</h6>
-                        <button class="">-</button>
-                    </div>
-                    <hr>
-                    <h6 class="total_CArt product-price ">55ج/م</h6>
-                </div>
-    
-                <div class=" col ">
-                    <img class="product-image" src="./img/offers_2.png" alt="">
-                </div>
-    
-    
-                <hr>
-            </div>
-        </div>
+    <div class="row_In_Cart" id="cartContainer">
+     
     </div>
 
 <a class="add-to-cart mb-3 text-center" href="{{ route('showCart') }}"> عربه التسوق </a>

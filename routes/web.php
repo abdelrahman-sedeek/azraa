@@ -35,6 +35,7 @@ Route::middleware('auth')->group(function () {
     Route::get('show-cart',[cartController::class,'show'])->name('showCart');
     Route::get('show-cart-ajax',[cartController::class,'show_ajax'])->name('showCartAjax');
     Route::delete('delete-cart/{id}',[cartController::class, 'delete'])->name('deleteCart');
+    Route::post('delete-cart-ajax/{id}',[cartController::class, 'delete'])->name('deleteCart');
     Route::post('update-cart',[cartController::class, 'update'])->name('updateCart');
     
 });

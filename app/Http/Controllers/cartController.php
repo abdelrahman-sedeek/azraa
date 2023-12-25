@@ -92,12 +92,14 @@ class cartController extends Controller
             ->where('carts.user_id', $user_id)
             ->select('carts.id', 'products.*', 'product_branches.*', 'carts.*')
             ->get();
-        if($cartItems->count()==0)
-        {
-            $cartItems='لايوجد منتجات في العربة';
-        }
+       
             return response($cartItems);
         
+    }
+    public function delete_ajax($id){
+        $cart = Cart::find($id);
+        $cart->delete();
+        return ($cart);
     }
         
 }
