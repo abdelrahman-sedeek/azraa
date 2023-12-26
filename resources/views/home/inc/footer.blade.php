@@ -28,7 +28,8 @@
                         <li> <a href="#"><i class="fa-brands fa-google-play"></i></a> </li>
                     </ul>
                     <h4>أزرع</h4>
-                    <p>اشتري بسعر الجمله</ح>
+                    <p>اشتري بسعر الجمله</
+                        >
                 </div>
 
                 <div class="col-lg-4">
@@ -69,11 +70,44 @@
     </div>
 
   
-
-
+    
+    @foreach ($cartItems as $product )
+    
     <div class="row_In_Cart" id="cartContainer">
-     
+        <div class="container">
+            <div class="row sm_style">
+                <hr>
+                <div class="col box_row_cart">
+                    <form action="{{ route('deleteCart',['id'=>$product->id]) }}" method="post">
+                        @csrf
+                        <button  type="submit" class="delete-item btn" data-item-id="{{ $product->id }}"><i class="fa-solid fa-trash-can mx-3"></i></button>
+                    </form>
+                            
+                </div>
+
+                <div class="col box_row_cart">
+                    <h5>{{ $product->name }}</h5>
+                </div>
+                <div class="col ">
+                    <div class="Qunte">
+                        
+                        <h6> الكمية: {{ $product->quantity }} </h6>
+                      
+                    </div>
+                    <hr>
+                    <h6 class="total_CArt">{{ $product->discounted_price }}ج/م</h6>
+                </div>
+
+                <div class=" col ">
+                    <img src="{{ asset(''.$product->image) }}" alt="">
+                </div>
+
+
+                <hr>
+            </div>
+        </div>
     </div>
+@endforeach
 
 <a class="add-to-cart mb-3 text-center" href="{{ route('showCart') }}"> عربه التسوق </a>
 
@@ -106,7 +140,7 @@
                 <span id='unit'> </span>
                 <span id="stock"> </span>
             </li>
-            <form  id="addToCartForm" >
+            <form  action="{{ route('addToCart') }}" method="POST" id="addToCartForm" >
                 @csrf
             
                 <li class="product_Quntity">
@@ -124,8 +158,9 @@
             <p id="add-message" style="color: green;" class="  mt-3"></p>
     
         </div>   
-
-    <button type="submit" onclick="validatePopUpForm()"  id="add-to-cart-btn"   class="add-to-cart"> اضف الي العربه <i class="fa-solid fa-cart-shopping"></i> </button>
+        
+@livewireScripts
+    <button type="submit"   id="add-to-cart-btn" onclick="validatePopUpForm()"   class="add-to-cart"> اضف الي العربه <i class="fa-solid fa-cart-shopping"></i> </button>
     </form>
     </div>
 </div>
@@ -144,34 +179,32 @@
 <script src="{{asset('/js/main.js')}}"></script>
 <script src="{{asset('/js/search.js')}}"></script>
 <script src="{{asset('/js/ajax.js')}}"></script>
-<script src="{{asset('/js/cart.js')}}"></script>
-<script type="text/javascript">
-   
-    </script>
+{{-- <script src="{{asset('/js/cart.js')}}"></script> --}}
+<script type="text/javascript"></script>
 
 <script>
-    $(document).ready(function () {
-    $('#search-input').on('keyup', function () {
-        var search = $(this).val();
+//     $(document).ready(function () {
+//     $('#search-input').on('keyup', function () {
+//         var search = $(this).val();
         
-        $.ajax({
-            type: 'GET',
-            url: '{{URL::to('/search-category')}}',
-            data: { search: search 
+//         $.ajax({
+//             type: 'GET',
+//             url: '{{URL::to('/search-category')}}',
+//             data: { search: search 
             
-            },
+//             },
 
-            success: function (data) {
-                // Update the UI with the search results
-                console.log('hi');
-                $('#search-results').html(data.output);
-            },
-            error: function (error) {
-                console.log( data.output);
-            }
-        });
-    });
-});
+//             success: function (data) {
+//                 // Update the UI with the search results
+//                 console.log('hi');
+//                 $('#search-results').html(data.output);
+//             },
+//             error: function (error) {
+//                 console.log( data.output);
+//             }
+//         });
+//     });
+// });
 
         
         
@@ -192,7 +225,8 @@ $(document).ready(function(){
         }
     });
 });
+
 </script>
-@livewireScripts
+
 </body>
 </html>

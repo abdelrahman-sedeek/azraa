@@ -1,9 +1,10 @@
 var quantityElement = document.getElementById('quantity');
 var currentQuantity = parseInt(quantityElement.innerText);
 var quantityElement = document.getElementById('quantity');
-realStock=''
+var realStock;
 var addButton = document.getElementById('add-to-cart-btn');
 var errorMessage = document.getElementById('error-message');
+
 $.ajaxSetup({
     headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -28,7 +29,7 @@ $(document).ready(function () {
         var measurement= $(this).data('product-measurement');
         updatePopupCard(productId,productBranchId, productName, productImage, productPrice, productDiscountedPrice, productUnit,productDiscrption,stock,measurement,alowedQuantity);
         // updateQuantity( stock);
-       
+        
         
     });
 
@@ -46,86 +47,100 @@ $(document).ready(function () {
       
         var finalStock;
         finalStock =stock / measurement;
-        // console.log('finalstock',measurement);
+        console.log('stock',stock);
         
         console.log('alowedQuantity',alowedQuantity);
         
-        if(finalStock<alowedQuantity){
+        if(finalStock<=alowedQuantity){
             console.log('finalStock',finalStock);
-            $('#quantity').attr('max',finalStock)
+           
             realStock= finalStock 
         }
         else{
-            $('#quantity').attr('max',alowedQuantity)
+           
             realStock= alowedQuantity
         }
+        $('#quantity').attr('max',realStock)
         $('#stock').text('المتاح: '+realStock);
         $('.popup-card').show();
 
     }
 
 });
+function validatePopUpForm() {
 
 
-
-    function validatePopUpForm() {
-        var csrfToken = $('meta[name="csrf-token"]').attr('content');
-        console.log(csrfToken)
-        var data = {
-            quantity: $('#quantity').val(),
-            main_pro_id: $('#product_id').val(),
-            product_id: $('#product_branches_id').val(),
-            // Add other data if needed
-        };
-
-        let x = document.getElementById("quantity").value;
-        let max = document.getElementById("quantity").max;
-        var message='';
-        if (x > max) {
-            message ='المخزون غير كافي '
-            document.getElementById("error-message").innerHTML = message;
-        console.log(data)
-        }
-        else
-        {
-            
-                $('#addToCartForm').submit(function(e) {
-                    e.preventDefault(); // Prevent the default form submission
-            
-                    console.log(data);
-                    $.ajax({
-                        type: 'POST',
-                        url: 'add-to-cart',
-                        data: data,
-                    
-                        success: function(response) {
-                            $('#add-message')
-                            .removeClass('alert-danger')  
-                            .addClass('alert-success')  
-                            .text(response)      
-                            .fadeIn(1000)        
-                            .delay(5000)                
-                            .fadeOut(1000);   
-                            $('#add-to-cart-btn').prop('disabled', true);
-
-                            // Set a timeout to enable the button after 5 seconds
-                            setTimeout(function () {
-                                $('#add-to-cart-btn').prop('disabled', false);
-                            }, 5000);
-                        },
-                        error: function(errorThrown) {
-                            console.error('Error:', errorThrown);
-                            console.log(data)
-                        
-
-                        }
+    let x = document.getElementById("quantity").value;
+    let max = document.getElementById("quantity").max;
+    console.log(x);
+    var message='';
+    if (x > max) {
+        message ='المخزون غير كافي '
+        $('#error-message').text(message).fadeIn(1000).delay(1000).fadeOut(500);
+        setTimeout(function () {
+            $('#add-to-cart-btn').prop('disabled', false);
+        }, 1000);
     
-                    });
-                 });
-        }
-
+    }
 
 }
+
+
+
+    
+    
+    
+    
+//     else
+//     {
+//             $('#addToCartForm').submit(function(e) {
+            
+               
+          
+//                     e.preventDefault(); // Prevent the default form submission
+//                     var  data = {
+//                         quantity: $('#quantity').val(),
+//                         main_pro_id: $('#product_id').val(),
+//                         product_id: $('#product_branches_id').val(),
+                        
+//                     };
+//                     console.log('after'+ data);
+//                     $.ajax({
+//                         type: 'POST',
+//                         url: 'add-to-cart',
+//                         data: data,
+                    
+//                         success: function(response) {
+//                             $('#add-message')
+//                             .removeClass('alert-danger')  
+//                             .addClass('alert-success')  
+//                             .text(response)      
+//                             .fadeIn(1000)        
+//                             .delay(1000)                
+//                             .fadeOut(1000);   
+//                             $('#add-to-cart-btn').prop('disabled', true);
+
+//                             // Set a timeout to enable the button after 5 seconds
+//                             setTimeout(function () {
+//                                 $('#add-to-cart-btn').prop('disabled', false);
+//                             }, 6000);
+//                             data.quantity=''
+//                             data.main_pro_id=''
+//                             data.product_id=''
+//                         },
+//                         error: function(errorThrown) {
+//                             console.error('Error:', errorThrown);
+//                             console.log(data)
+                        
+
+//                         }
+    
+//                     });
+//                 });
+//     }
+// }          
+                
+            // }
  
 // update quantity
 $(document).ready(function () {
@@ -160,7 +175,7 @@ $(document).ready(function () {
         if (newQuantity !== originalQuantity) {
             if(allowedStock<newQuantity){
                 var errorMessage = 'المخزون غير كافي';
-            $('#cart-message'+cartId).text(errorMessage).fadeIn(1000).delay(3000);
+            $('#cart-message'+cartId).text(errorMessage).fadeIn(1000).delay(1000);
             }
             else{
                 $('#cart-message'+cartId).fadeOut(100).delay(100);

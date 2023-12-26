@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Models\ProductBranch;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
@@ -11,17 +13,46 @@ class cartController extends Controller
 {
     public function add(Request $request){
         // $cart= new Cart();
-        
-        if($request->ajax())
-        {
-            $data = $request->all();
-        // dd($request->ajax());
+       
+        $data = $request->all();
       
         $quantity = $data['quantity'];
         $productId = $data['main_pro_id'];
         $product_branches_id = $data['product_id'];
         $user_id = auth()->id();
-        
+
+        $product = Product::find($productId);
+        $productBranch = ProductBranch::find($product_branches_id);
+        $calcStock = $product->stock / $productBranch->measurement;
+      
+       
+        if($calcStock <= $product->total_allowed_quantity)
+        {
+            $availableQuantity = $calcStock;
+        }
+        else
+        {
+            $availableQuantity = $product->total_allowed_quantity;
+        }
+       
+        if ($quantity > $availableQuantity)
+        {
+            return back()->with('message', 'الكميه غير متاحه لا يمكنك اضافه هذا المنتج');
+        }
+        $existingCartItem = Cart::where('user_id', $user_id)
+        ->where('main_pro_id', $productId)
+        ->where('product_id', $product_branches_id)
+        ->first();
+        // dd($existingCartItem);
+        if($existingCartItem!=null)
+        {
+            if($availableQuantity - $existingCartItem->quantity) {
+                return back()->with('message', 'الكميه غير متاحه لا يمكنك اضافه هذا المنتج');
+    
+            }
+
+        }
+
         $cart=Cart::create([
 
             'user_id'=>$user_id,
@@ -32,20 +63,22 @@ class cartController extends Controller
          
         ]);
         $cart->save();
-        return response('تم الاضافة بنجاح');
-        }
+        return redirect()->back()->with('message', 'تم الاضافة في العربة');
+        // if($request->ajax())
+        // {
+        // // return response('تم الاضافة بنجاح');
+        // }
         
-        // return redirect()->back()->with('message', 'تم الاضافة في العربة');
     }
     public function Show(){
         $user_id = auth()->id();
-
-    $cartItems = DB::table('carts')
-        ->join('products', 'carts.main_pro_id', '=', 'products.id')
-        ->join('product_branches', 'carts.product_id', '=', 'product_branches.id')
-        ->where('carts.user_id', $user_id)
-        ->select('carts.id', 'products.*', 'product_branches.*', 'carts.*')
-        ->get();
+        
+        $cartItems = DB::table('carts')
+            ->join('products', 'carts.main_pro_id', '=', 'products.id')
+            ->join('product_branches', 'carts.product_id', '=', 'product_branches.id')
+            ->where('carts.user_id', $user_id)
+            ->select('carts.id', 'products.*', 'product_branches.*', 'carts.*')
+            ->get();
         // dd($cartItems);
         return view('home.cart',compact('cartItems'));
     }
@@ -85,13 +118,13 @@ class cartController extends Controller
     }
     public function Show_ajax(){
         $user_id = auth()->id();
-
         $cartItems = DB::table('carts')
             ->join('products', 'carts.main_pro_id', '=', 'products.id')
             ->join('product_branches', 'carts.product_id', '=', 'product_branches.id')
             ->where('carts.user_id', $user_id)
             ->select('carts.id', 'products.*', 'product_branches.*', 'carts.*')
             ->get();
+        //    dd($cartItems) ;
        
             return response($cartItems);
         

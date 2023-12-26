@@ -41,15 +41,17 @@
                     
                     <div class="ssaa ">
                         <div class="box item" 
-                        data-product-id="{{ $product->product_id }}"
+                        d data-product-id="{{ $product->product_id }}"
+                        data-product-branch-id="{{ $product->id }}"
                         data-product-name="{{ $product->name }}"
                         data-product-image="{{ asset('' . $product->image) }}"
                         data-product-price="{{ $product->price }}"
                         data-product-discounted-price="{{ $product->discounted_price }}"
                         data-product-unit="{{ $product->unit }}"
-                        data-product-branch-id="{{ $product->id }}"
                         data-product-discrption="{{ $product->description }}"
-                        data-product-quantity="{{ $product->total_allowed_quantity }}">
+                        data-product-quantity="{{ $product->total_allowed_quantity }}"
+                        data-product-stock="{{ $product->stock}}"
+                        data-product-measurement="{{ $product->measurement}}">
                           
                             
                                 <img src="{{ asset(''.$product->image) }}" alt="">

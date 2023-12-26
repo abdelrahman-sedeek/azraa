@@ -1,15 +1,17 @@
 $(document).ready(function() {
   
-//   GetData
+    var data;
    
     function getData(){
+       
         $.ajax({
             type: 'GET',
             url: 'show-cart-ajax', 
             dataType: 'json',
             success: function(response) {
             
-                displayData(response);
+                data=response;
+              
             },
             error: function(error) {
                 console.error('Error fetching data:', error);
@@ -17,9 +19,9 @@ $(document).ready(function() {
         });
     
         
-        function displayData(response) {
+        function displayData(data) {
            
-            response.forEach(function(item) {
+            response.forEach(function(data) {
                 // Create a new row for each item
                 $('#cartContainer').append(
                     '<div class="container">' +
@@ -27,23 +29,23 @@ $(document).ready(function() {
                             '<hr>' +
                             // Update the content of the new row with item data
                             '<div class="col box_row_cart">' +
-                            '<a href="#" class="delete-item" data-item-id="' + item.id + '"><i class="fa-solid fa-trash-can mx-3"></i></a>' +
-                            '<a value=" '+item.id+' href=""><i class="fa-solid fa-pen"></i></a>' +
+                            '<a href="#" class="delete-item" data-item-id="' + data.id + '"><i class="fa-solid fa-trash-can mx-3"></i></a>' +
+                            '<a value=" '+data.id+' href=""><i class="fa-solid fa-pen"></i></a>' +
                             '</div>' +
                             '<div class="col box_row_cart">' +
-                                '<h5 class="product-name">' + item.name + '</h5>' +
+                                '<h5 class="product-name">' + data.name + '</h5>' +
                             '</div>' +
                             '<div class="col ">' +
                                 '<div class="Qunte">' +
                                     // '<button>+</button>' +
-                                    '<h6 class="quantityCard m-auto ">' + item.quantity + '</h6>' +
+                                    '<h6 class="quantityCard m-auto ">' + data.quantity + '</h6>' +
                                     // '<button class="">-</button>' +
                                 '</div>' +
                                 '<hr>' +
-                                '<h6 class="total_CArt product-price ">' + item.price + '</h6>' +
+                                '<h6 class="total_CArt product-price ">' + data.price + '</h6>' +
                             '</div>' +
                             '<div class=" col ">' +
-                                '<img class="product-image" src="' + item.image + '" alt="">' +
+                                '<img class="product-image" src="' + data.image + '" alt="">' +
                             '</div>' +
                             '<hr>' +
                         '</div>' +
@@ -65,11 +67,11 @@ $(document).ready(function() {
             url: 'delete-cart-ajax/'+itemId,
             data: { id: itemId }, 
             success: function(response) {
-                
+                displayData(data)
                 console.log('Item deleted successfully');
                
                 $('#cartContainer').empty();
-                getData();
+               
             },
             error: function(error) {
                 console.error('Error deleting item:', error);
@@ -77,13 +79,9 @@ $(document).ready(function() {
         });
     }
     
-    getData()
-    $('#addToCartForm').submit(function(event) {
-        event.preventDefault();
-        $('#cartContainer').empty();
-        getData();
-    });
-
+   
+    
+   
     
     /** start of delete one product  */
     $('.delete-item').click(function(event) {
@@ -93,5 +91,5 @@ $(document).ready(function() {
       
     });
 
- 
+    getData();
 });

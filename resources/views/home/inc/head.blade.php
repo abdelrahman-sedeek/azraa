@@ -10,6 +10,21 @@
     <link rel="icon" href="{{ asset('/img/logo.png') }}">
     <link rel="stylesheet" href="{{ asset('/css/main.css') }}">
     @livewireStyles
+    <style>
+        .popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #; /* Red background */
+    color: #ffffff; /* White text */
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+}
+    </style>
 </head>
 <body>
 <!-- navbar -->
@@ -41,6 +56,26 @@
         </form>
         @else
         <a href="{{ route('login') }}">تسجيل دخول</a>
+        
         @endif
+        @if(session('message'))
+    <div id="error-popup"  class=" alert alert-success alert-dismissible fixed-top    popup">
+        <p>{{ session('message') }}</p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var errorPopup = document.getElementById('error-popup');
+
+            // Show the pop-up
+            errorPopup.style.display = 'block';
+
+            // Hide the pop-up after 2 seconds
+            setTimeout(function() {
+                errorPopup.style.display = 'none';
+            }, 3000);
+        });
+    </script>
+@endif
     </div>
 </div>

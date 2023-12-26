@@ -20,11 +20,11 @@
             $discount=0;
             $total=0;
         ?>
-         @if(Session::has('message'))
+         {{-- @if(Session::has('message'))
          <div class="alert alert-success" role="alert">
              {{ Session::get('message') }}
          </div>
-         @endif
+         @endif --}}
          @if(!$cartItems->isEmpty())
          
         @foreach ($cartItems as $item )
@@ -97,14 +97,17 @@
                 <h3>اجمالي الحساب</h3>
                     <div class="row">
                         <div class="col cart_total_contant">
+                            <form action="{{ route('addOrder') }}" method="post">
+                            @csrf
                             <h4> الحساب</h4>
                             <h5>{{ $price }}ج/م</h5>
+                            <input type="hidden" name="price" value="{{ $price }}">
                         </div>
                         <div class="col cart_total_contant">
                             <h4>التوصيل</h4>
                             <h5>مجانا</h5>
                         </div>
-
+                  
                         <div class="col cart_total_contant">
                             <h4>خصم</h4>
                             <h5>{{ $discount }}ج/م</h5>
@@ -113,10 +116,11 @@
                         <div class="col cart_total_contant">
                             <h4>الاجمالي</h4>
                             <h5>ج/م{{ $total }}</h5>
+                            <input type="hidden" name="total" value="{{ $total }}">
                         </div>
                     </div>
-                <a class="add-to-cart" href="{{route('checkout')}}">اكمل الطلب</a>
-
+                <button  class="add-to-cart" >اكمل الطلب</button>
+            </form>
             </div>
             @else
              
