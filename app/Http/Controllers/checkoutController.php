@@ -26,6 +26,8 @@ class checkoutController extends Controller
             DB::beginTransaction();
         
             try {
+                $unavailableProducts = [];
+        
                 foreach ($cartItems as $cartItem) {
                     $productId = $cartItem->main_pro_id;
                     $productBranchId = $cartItem->product_id;
@@ -36,11 +38,20 @@ class checkoutController extends Controller
         
                     // Check if there is enough stock
                     if ($quantity * $productBranch->measurement > $product->stock) {
-                        throw new \Exception('Insufficient stock for product ' . $product->name);
+                        $unavailableProducts[] = $product->name;
+        
+                        // Skip updating stock for this product, move on to the next one
+                        continue;
                     }
         
                     $product->stock -= $quantity * $productBranch->measurement;
                     $product->save();
+                }
+        
+                if (!empty($unavailableProducts)) {
+                    $unavailableProductsList = implode(', ', $unavailableProducts);
+                    $errorMessage = "الكمية المطلوبة غير متاحة للمنتجات التالية: {$unavailableProductsList}. الرجاء اختيار كمية صحيحة.";
+                    return back()->with('message', $errorMessage);
                 }
         
                 $order = Order::create([
@@ -53,7 +64,6 @@ class checkoutController extends Controller
         
                 if ($order) {
                     Cart::where('user_id', $user_id)->delete();
-        
                     DB::commit();
         
                     return redirect()->back()->with('message', 'تم اكمال الطلب بنجاح');
