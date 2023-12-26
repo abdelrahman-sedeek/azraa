@@ -67,21 +67,26 @@ $(document).ready(function () {
     }
 
 });
+function dispalyMessage(message){
+    $('#error-message').text(message).fadeIn(1000).delay(1000).fadeOut(500);
+    setTimeout(function () {
+        $('#add-to-cart-btn').prop('disabled', false);
+    }, 1000);
+    
+};
 function validatePopUpForm() {
 
 
     let x = document.getElementById("quantity").value;
     let max = document.getElementById("quantity").max;
-    console.log(x);
-    var message='';
-    if (x > max) {
-        message ='المخزون غير كافي '
-        $('#error-message').text(message).fadeIn(1000).delay(1000).fadeOut(500);
-        setTimeout(function () {
-            $('#add-to-cart-btn').prop('disabled', false);
-        }, 1000);
+    console.log(max)
     
+    message ='المخزون غير كافي '
+    if (x > max) {
+        dispalyMessage(message);
+      
     }
+    // event.preventDefault();
 
 }
 

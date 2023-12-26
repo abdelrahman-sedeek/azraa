@@ -39,14 +39,16 @@ class cartController extends Controller
         {
             return back()->with('message', 'الكميه غير متاحه لا يمكنك اضافه هذا المنتج');
         }
-        $existingCartItem = Cart::where('user_id', $user_id)
-        ->where('main_pro_id', $productId)
-        ->where('product_id', $product_branches_id)
-        ->first();
-        // dd($existingCartItem);
-        if($existingCartItem!=null)
+                $cartItems = Cart::where('user_id', $user_id)
+            ->where('main_pro_id', $productId)
+            ->where('product_id', $product_branches_id)
+            ->get();
+
+        $totalQuantityInCart = $cartItems->sum('quantity');
+        // dd($availableQuantity-$totalQuantityInCart );
+        if($totalQuantityInCart!=null)
         {
-            if($availableQuantity - $existingCartItem->quantity) {
+            if($availableQuantity - $totalQuantityInCart - $quantity<=0) {
                 return back()->with('message', 'الكميه غير متاحه لا يمكنك اضافه هذا المنتج');
     
             }
