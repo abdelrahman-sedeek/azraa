@@ -16,11 +16,11 @@
 
 <section class="Login form" id="Login">
     <div class="contaoner">
-
+       
         <form action="{{ route('registerPost') }}" method="post" class="Login_form">
             @csrf
             <h3>أنشاء حساب</h3>
-                    @if ($errors->any())
+                    {{-- @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
                     @foreach ($errors->all() as $error)
@@ -28,26 +28,47 @@
                     @endforeach
                 </ul>
             </div>
-        @endif
+        @endif --}}
+            <label  for=""> الاسم</label>
+            <input name="name"  value="{{ old('name') }}" type="text" placeholder="">
+            @error('name')
+            <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+     
             <label for="">رقم الهاتف</label>
-            <input name="mobile" type="text" placeholder="">
+            <input name="mobile"  value="{{ old('mobile') }}" type="text" placeholder="">
+            @error('mobile')
+            <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <label  for="">كلمه السر</label>
-            <input name="password" type="password" placeholder="">
-               <!-- Add a div to hold the map -->
-               <div id="map" style="height: 300px;"></div>
-
+            <input name="password"  value="{{ old('password') }}" type="password" placeholder="">
+            @error('password')
+            <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+            <label  for="">العنوان</label>
+            <input   value="{{ old('address') }}" type="text" name="address"  >
+            @error('address')
+            <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+            <label for="addressType">نوع العنوان</label>
+            <select class="form-control mb-5" id="addressType" name="type">
+                <option value="منزل">منزل</option>
+                <option value="عمل">عمل</option>
+            </select>
+            <!-- Add a div to hold the map -->
+            
                <!-- Input fields for latitude and longitude -->
                <input type="hidden" name="latitude" id="latitude">
                <input type="hidden" name="longitude" id="longitude">
    
-            <button class="add-to-cart">ارسل</button>
-            <a href="{{ route('login') }}" type="submit"  class="add-to-cart" >تسجيل دخول</a>
+            {{-- <button class="add-to-cart">ارسل</button>--}}
+            <button  type="submit"  class="add-to-cart" >تسجيل دخول</button> 
         </form>
 
     </div>
 </section>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
-<script>
+{{-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script> --}}
+{{-- <script>
     var map;
 
     function initMap() {
@@ -62,7 +83,9 @@
             document.getElementById('longitude').value = event.latLng.lng();
         });
     }
-</script>
+</script> --}}
 
 
 @include('home.inc.footer')
+{{-- @include('home.inc.liveCart') --}}
+@include('home.inc.popUp')

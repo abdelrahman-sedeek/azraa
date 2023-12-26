@@ -52,7 +52,7 @@
 </section>
 @include('home.inc.footer') 
 
-
+@include('home.inc.popUp')
 
 
 

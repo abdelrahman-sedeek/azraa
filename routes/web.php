@@ -40,10 +40,10 @@ Route::middleware('auth')->group(function () {
     
     Route::post('delete-cart-ajax/{id}',[cartController::class, 'delete'])->name('deleteCart');
     Route::post('update-cart',[cartController::class, 'update'])->name('updateCart');
+    route::get('/single-product/{product_id}',[indexController::class ,'single_product'])->name('single_product');
+    route::get('/home',[indexController::class ,'index'])->name('index');
     
 });
-route::get('/home',[indexController::class ,'index'])->name('index');
-route::get('/single-product/{product_id}',[indexController::class ,'single_product'])->name('single_product');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 
