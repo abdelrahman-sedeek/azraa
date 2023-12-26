@@ -24,16 +24,16 @@ Route::group(['middleware' => 'guest'], function () {
     Route::get('/login', [AuthController::class, 'login'])->name('login');
     Route::post('/login', [AuthController::class, 'loginPost'])->name('loginPost');
 });
-Route::middleware('auth')->group(function () {
-
+Route::middleware('userStatus')->group(function () {
+    
     route::get('/category/{category_id}',[categoryController::class ,'index'])->name('category');
     route::get('/search-category',[categoryController::class ,'categorySearch'])->name('categorySearch');
     route::get('/allCategory',[categoryController::class ,'show'])->name('allCategory');
-
+    
     route::get('/category/{category_id}/subcategory/{subcategory_id}',[indexController::class ,'subcategory'])->name('subcategory');
     route::get('/all-offers',[indexController::class ,'allOffer'])->name('allOffer');
     route::get('/recent-added',[indexController::class ,'recentAdded'])->name('recentAdded');
-     //  cart 
+    //  cart 
     Route::post('add-to-cart',[cartController::class, 'add'])->name('addToCart');
     Route::get('show-cart',[cartController::class,'show'])->name('showCart');
     Route::get('show-cart-ajax',[cartController::class,'show_ajax'])->name('showCartAjax');
@@ -42,13 +42,13 @@ Route::middleware('auth')->group(function () {
     Route::post('update-cart',[cartController::class, 'update'])->name('updateCart');
     route::get('/single-product/{product_id}',[indexController::class ,'single_product'])->name('single_product');
     route::get('/home',[indexController::class ,'index'])->name('index');
+    Route::post('add-order',[checkoutController::class, 'add'])->name('addOrder');
+    Route::get('checkout',[checkoutController::class,'show'])->name('checkout');
     
 });
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-
+Route::get('pending',[AuthController::class, 'pending'])->name('pending');
 
 // cheakout
-Route::post('add-order',[checkoutController::class, 'add'])->name('addOrder');
-Route::get('checkout',[checkoutController::class,'show'])->name('checkout');
 // Route::delete('delete-cart/{id}',[cartController::class, 'delete'])->name('deleteCart');
