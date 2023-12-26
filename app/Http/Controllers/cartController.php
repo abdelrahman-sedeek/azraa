@@ -48,7 +48,7 @@ class cartController extends Controller
         // dd($availableQuantity-$totalQuantityInCart );
         if($totalQuantityInCart!=null)
         {
-            if($availableQuantity - $totalQuantityInCart - $quantity<=0) {
+            if($availableQuantity - $totalQuantityInCart - $quantity<0) {
                 return back()->with('message', 'الكميه غير متاحه لا يمكنك اضافه هذا المنتج');
     
             }

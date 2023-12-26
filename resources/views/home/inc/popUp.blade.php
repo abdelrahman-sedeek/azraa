@@ -63,7 +63,7 @@
     <script src="{{asset('/js/main.js')}}"></script>
     <script src="{{asset('/js/search.js')}}"></script>
     <script src="{{asset('/js/ajax.js')}}"></script>
-    <script src="{{asset('/js/map.js')}}"></script>
+    {{-- <script src="{{asset('/js/map.js')}}"></script> --}}
     {{-- <script src="{{asset('/js/cart.js')}}"></script> --}}
     <script type="text/javascript"></script>
     
