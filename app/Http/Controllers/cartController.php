@@ -11,67 +11,60 @@ use Illuminate\Support\Facades\Auth;
 
 class cartController extends Controller
 {
-    public function add(Request $request){
-        // $cart= new Cart();
-       
+    public function add(Request $request)
+    {
         $data = $request->all();
-      
+    
         $quantity = $data['quantity'];
         $productId = $data['main_pro_id'];
         $product_branches_id = $data['product_id'];
         $user_id = auth()->id();
-
+    
         $product = Product::find($productId);
         $productBranch = ProductBranch::find($product_branches_id);
         $calcStock = $product->stock / $productBranch->measurement;
-      
-       
-        if($calcStock <= $product->total_allowed_quantity)
-        {
+    
+        if ($calcStock <= $product->total_allowed_quantity) {
             $availableQuantity = $calcStock;
-        }
-        else
-        {
+        } else {
             $availableQuantity = $product->total_allowed_quantity;
         }
-       
-        if ($quantity > $availableQuantity)
-        {
+    
+        if ($quantity > $availableQuantity) {
             return back()->with('message', 'الكميه غير متاحه لا يمكنك اضافه هذا المنتج');
         }
-                $cartItems = Cart::where('user_id', $user_id)
+    
+        $existingCartItem = Cart::where('user_id', $user_id)
             ->where('main_pro_id', $productId)
             ->where('product_id', $product_branches_id)
-            ->get();
-
-        $totalQuantityInCart = $cartItems->sum('quantity');
-        // dd($availableQuantity-$totalQuantityInCart );
-        if($totalQuantityInCart!=null)
-        {
-            if($availableQuantity - $totalQuantityInCart - $quantity<0) {
-                return back()->with('message', 'الكميه غير متاحه لا يمكنك اضافه هذا المنتج');
+            ->first();
     
+        if ($existingCartItem) {
+            $totalQuantityInCart = $existingCartItem->quantity + $quantity;
+    
+            if ($totalQuantityInCart > $availableQuantity) {
+                return back()->with('message', 'الكميه غير متاحه لا يمكنك اضافه هذا المنتج');
             }
-
+    
+            $existingCartItem->update([
+                'quantity' => $totalQuantityInCart,
+                'quantity_final' => $totalQuantityInCart,
+            ]);
+    
+            return redirect()->back()->with('message', 'تم تحديث الكمية في العربة');
         }
-
-        $cart=Cart::create([
-
-            'user_id'=>$user_id,
-            'main_pro_id'=>$productId,
-            'product_id'=>$product_branches_id,
-            'quantity'=>$quantity,
-            'quantity_final'=>$quantity,
-         
+    
+        $cart = Cart::create([
+            'user_id' => $user_id,
+            'main_pro_id' => $productId,
+            'product_id' => $product_branches_id,
+            'quantity' => $quantity,
+            'quantity_final' => $quantity,
         ]);
-        $cart->save();
+    
         return redirect()->back()->with('message', 'تم الاضافة في العربة');
-        // if($request->ajax())
-        // {
-        // // return response('تم الاضافة بنجاح');
-        // }
-        
     }
+    
     public function Show(){
         $user_id = auth()->id();
         

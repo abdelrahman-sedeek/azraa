@@ -14,7 +14,18 @@
 
     @foreach ($cartItems as $product )
     
-        <div class="row_In_Cart" id="cartContainer">
+        <div class="row_In_Cart item " id="cartContainer"
+                        data-product-id="{{ $product->main_pro_id }}"
+                        data-product-branch-id="{{ $product->product_id }}"
+                        data-product-name="{{ $product->name }}"
+                        data-product-image="{{ asset('' . $product->image) }}"
+                        data-product-price="{{ $product->price }}"
+                        data-product-discounted-price="{{ $product->discounted_price }}"
+                        data-product-unit="{{ $product->unit }}"
+                        data-product-discrption="{{ $product->description }}"
+                        data-product-quantity="{{ $product->total_allowed_quantity }}"
+                        data-product-stock="{{ $product->stock}}"
+                        data-product-measurement="{{ $product->measurement}}">
             <div class="container">
                 <div class="row sm_style">
                     <hr>
@@ -23,6 +34,8 @@
                             @csrf
                             <button  type="submit" class="delete-item btn" data-item-id="{{ $product->id }}"><i class="fa-solid fa-trash-can mx-3"></i></button>
                         </form>
+                         <button onclick="addtoChose()"   class=" btn" data-item-id="{{ $product->id }}"><i class="fas fa-pen mx-3"></i></button>
+                       
                                 
                     </div>
 

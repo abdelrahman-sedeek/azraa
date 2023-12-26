@@ -29,7 +29,18 @@
          
         @foreach ($cartItems as $item )
 
-            <div class="row">
+            <div class="row item"  
+                data-product-id="{{ $item->main_pro_id }}"
+                data-product-branch-id="{{ $item->product_id }}"
+                data-product-name="{{ $item->name }}"
+                data-product-image="{{ asset('' . $item->image) }}"
+                data-product-price="{{ $item->price }}"
+                data-product-discounted-price="{{ $item->discounted_price }}"
+                data-product-unit="{{ $item->unit }}"
+                data-product-discrption="{{ $item->description }}"
+                data-product-quantity="{{ $item->total_allowed_quantity }}"
+                data-product-stock="{{ $item->stock}}"
+                data-product-measurement="{{ $item->measurement}}">
 
             <?php
             $price += $item->price * $item->quantity;
@@ -83,6 +94,11 @@
                         <button type="submit" class=""> <i class="fa-solid fa-trash-can"></i> </button>
                     </form>
                 </div>
+                <div class="col cart_page_contant">
+                    <button onclick="addtoChose()"   class=" btn" data-item-id="{{ $item->id }}"><i class="fas fa-pen mx-3"></i></button>
+
+                </div>
+                       
 
 
             </div>
