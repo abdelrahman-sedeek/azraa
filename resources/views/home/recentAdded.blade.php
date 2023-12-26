@@ -81,3 +81,5 @@
 </section>
 
 @include('home.inc.footer')
+@include('home.inc.liveCart')
+@include('home.inc.popUp')
