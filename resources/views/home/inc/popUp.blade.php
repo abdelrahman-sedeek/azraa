@@ -38,7 +38,7 @@
                     
                     <input id="product_branches_id" value="" hidden  name='product_id'>
                     <input id="product_id"         value="" hidden   name='main_pro_id'>
-                    <p class="error-message" style="color: red;"></p>   
+                    <p id="error-message" style="color: red;"></p>   
                     <p id="add-message" style="color: green;" class="  mt-3"></p>
             
             </div>   
@@ -91,7 +91,7 @@
                         
                         <input class="product_branches_id" value="" hidden  name='product_id'>
                         <input class="product_id"         value="" hidden   name='main_pro_id'>
-                        <p class="error-message" style="color: red;"></p>   
+                        <p id="error-message" style="color: red;"></p>   
                         <p id="add-message" style="color: green;" class="  mt-3"></p>
                 
                 </div> 
