@@ -38,7 +38,7 @@
                     
                     <input id="product_branches_id" value="" hidden  name='product_id'>
                     <input id="product_id"         value="" hidden   name='main_pro_id'>
-                    <p id="error-message" style="color: red;"></p>   
+                    <p class="error-message" style="color: red;"></p>   
                     <p id="add-message" style="color: green;" class="  mt-3"></p>
             
             </div>   
@@ -56,7 +56,55 @@
         <div class="" id="Git_Back"></div>
     </div>
     
-    
+    {{-- UPDATE MODAL --}}
+ 
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog  modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="product_detals">
+                    <h3 class="modal-title fs-5" id="product-name"></h3>
+
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="product_chose_container">
+                    <ul class="product_chose">
+                        <li class="right_side">
+                            <h5 ></h5>
+                            <span> قبل الخصم : <del></del> </span><br>
+                            <span class='unit'> </span><br>
+                            <span id="stock-update"> </span><br>
+                        </li>
+                        <form  action="{{ route('updateCart') }}" method="POST" id="update-cart" >
+                            @csrf
+                        
+                            <li class="product_Quntity">
+                                <label for="">الكمية:</label><br>
+                                <input type="number"  class="quantity w-25"  name='quantity' value="1"  id="quantity-update">
+                                
+                             
+                            </li>
+                        </ul>
+                    
+                        
+                        <input class="product_branches_id" value="" hidden  name='product_id'>
+                        <input class="product_id"         value="" hidden   name='main_pro_id'>
+                        <p class="error-message" style="color: red;"></p>   
+                        <p id="add-message" style="color: green;" class="  mt-3"></p>
+                
+                </div> 
+            </div>
+            <div class="modal-footer">
+                {{-- <button type="button" class="btn btn-danger" data-bs-dismiss="modal">غلق</button> --}}
+                <button type="submit"   id="add-to-cart-btn" onclick="validatePopUpFormUpdate()"   class="add-to-cart "> حفظ التعديلات</button>
+            </div>
+        </form>  
+          </div>
+        </div>
+      </div>
+ 
     <script src="{{asset('js/jquery-3.5.1.min.js')}}"></script>
     <script src="{{asset('/js/owl.carousel.min.js')}}"></script>
     <script src="{{asset('/js/all.min.js')}}"></script>

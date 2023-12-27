@@ -25,17 +25,18 @@
                         data-product-discrption="{{ $product->description }}"
                         data-product-quantity="{{ $product->total_allowed_quantity }}"
                         data-product-stock="{{ $product->stock}}"
-                        data-product-measurement="{{ $product->measurement}}">
+                        data-product-measurement="{{ $product->measurement}}"
+                        data-cart-id="{{ $product->id }}" >
             <div class="container">
                 <div class="row sm_style">
                     <hr>
                     <div class="col box_row_cart">
                         <form action="{{ route('deleteCart',['id'=>$product->id]) }}" method="post">
                             @csrf
-                            <button  type="submit" class="delete-item btn" data-item-id="{{ $product->id }}"><i class="fa-solid fa-trash-can mx-3"></i></button>
+                            <button  type="submit" class="delete-item btn" data-item-id="{{ $product->id }}"><i class="fa-solid fa-trash-can "></i></button>
                         </form>
-                         <button onclick="addtoChose()"   class=" btn" data-item-id="{{ $product->id }}"><i class="fas fa-pen mx-3"></i></button>
-                       
+                         {{-- <button onclick="addtoChose()"   class=" btn" data-item-id="{{ $product->id }}"><i class="fas fa-pen mx-3"></i></button> --}}
+                         <button type="button" class="btn " data-item-id="{{ $product->id }}" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo"><i class="fas fa-pen mx-3"></i></button>
                                 
                     </div>
 

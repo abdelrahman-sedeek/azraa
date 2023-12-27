@@ -97,28 +97,56 @@ class cartController extends Controller
 
 
     
-    public function update(Request $request){
-        $data = $request->all();
+        public function update(Request $request){
+            $data = $request->all();
         
-        $id = $data['id'];
-        $quantity = $data['quantity'];
-    
-        // Find the cart record based on user_id, main_pro_id, and product_id
-        $cart = Cart::where([
-            'id' => $id,
-          
-        ])->first();
-    
-        // Check if the cart record exists
-        if ($cart) {
-            // Update only the quantity field
-            $cart->update(['quantity' => $quantity]);
-    
-            return response()->json(['message' => 'تم تحديث الكمية في العربة']);
-        } else {
-            return response()->json(['error' => 'Record not found'], 404);
+            $quantity = $data['quantity'];
+            $productId = $data['main_pro_id'];
+            $product_branches_id = $data['product_id'];
+            $user_id = auth()->id();
+        
+            $product = Product::find($productId);
+            $productBranch = ProductBranch::find($product_branches_id);
+        
+            $calcStock = $product->stock / $productBranch->measurement;
+        
+            if ($calcStock <= $product->total_allowed_quantity) {
+                $availableQuantity = $calcStock;
+            } else {
+                $availableQuantity = $product->total_allowed_quantity;
+            }
+        
+            $cartItem = Cart::where('user_id', $user_id)
+                ->where('main_pro_id', $productId)
+                ->where('product_id', $product_branches_id)
+                ->first();
+        
+            if (!$cartItem) {
+                return back()->with('message', 'المنتج غير موجود في العربة');
+            }
+        
+            $totalQuantityInCart = Cart::where('user_id', $user_id)
+                ->where('main_pro_id', $productId)
+                ->sum('quantity');
+        
+            // Check if the updated quantity exceeds the available stock
+            if ($quantity > $availableQuantity) {
+                return back()->with('message', 'الكمية غير متاحة لا يمكنك تحديث العربة');
+            }
+        
+            // Check if the updated quantity exceeds the available stock in the cart
+            if ($availableQuantity - $totalQuantityInCart - $quantity < 0) {
+                return back()->with('message', 'الكمية غير متاحة لا يمكنك تحديث العربة');
+            }
+        
+            // Update the quantity in the cart
+            $cartItem->update([
+                'quantity' => $quantity,
+                'quantity_final' => $quantity,
+            ]);
+        
+            return redirect()->back()->with('message', 'تم تحديث العربة بنجاح');
         }
-    }
     public function Show_ajax(){
         $user_id = auth()->id();
         $cartItems = DB::table('carts')

@@ -95,7 +95,7 @@
                     </form>
                 </div>
                 <div class="col cart_page_contant">
-                    <button onclick="addtoChose()"   class=" btn" data-item-id="{{ $item->id }}"><i class="fas fa-pen mx-3"></i></button>
+                    <button type="button" class="btn " data-item-id="{{ $item->id }}" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo"><i class="fas fa-pen mx-3"></i></button>
 
                 </div>
                        

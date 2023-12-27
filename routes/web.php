@@ -37,7 +37,7 @@ Route::middleware('userStatus')->group(function () {
     Route::post('add-to-cart',[cartController::class, 'add'])->name('addToCart');
     Route::get('show-cart',[cartController::class,'show'])->name('showCart');
     Route::get('show-cart-ajax',[cartController::class,'show_ajax'])->name('showCartAjax');
-    
+    Route::post('update-cart',[cartController::class, 'update'])->name('updateCart');
     Route::post('delete-cart-ajax/{id}',[cartController::class, 'delete'])->name('deleteCart');
     Route::post('update-cart',[cartController::class, 'update'])->name('updateCart');
     route::get('/single-product/{product_id}',[indexController::class ,'single_product'])->name('single_product');

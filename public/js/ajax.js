@@ -27,9 +27,10 @@ $(document).ready(function () {
         var alowedQuantity= $(this).data('product-quantity');
         var stock= $(this).data('product-stock');
         var measurement= $(this).data('product-measurement');
+        var CartId= $(this).data('cart-id');
         updatePopupCard(productId,productBranchId, productName, productImage, productPrice, productDiscountedPrice, productUnit,productDiscrption,stock,measurement,alowedQuantity);
         // updateQuantity( stock);
-        
+        updatePreviousModal(productId, productBranchId, productName, productImage, productPrice, productDiscountedPrice, productUnit, productDiscrption, stock, measurement, alowedQuantity,CartId);
         
     });
 
@@ -66,6 +67,33 @@ $(document).ready(function () {
 
     }
 
+    function updatePreviousModal(productId, productBranchId, name, image, price, discountedPrice, unit, productDiscrption, stock, measurement, alowedQuantity,CartId) {
+
+        $('.product_detals h3').text(name);
+        $('.right_side h5').text('بعد الخصم:'+ discountedPrice);
+        $('.right_side span del').text(price);
+        $('.unit').text('الوحدة:'+ unit);
+        $('.product_id').val(productId);
+        $('.product_branches_id').val(productBranchId);
+       
+        var finalStock;
+        finalStock =stock / measurement;
+        
+        console.log('alowedQuantity',alowedQuantity);
+        
+        if(finalStock<=alowedQuantity){
+            console.log('finalStock',finalStock);
+           
+            realStock= finalStock 
+        }
+        else{
+           
+            realStock= alowedQuantity
+        }
+        $('#quantity-update').attr('max',realStock)
+        $('#stock-update').text('المتاح: '+realStock);
+    }
+
 });
 function dispalyMessage(message){
     $('#error-message').text(message).fadeIn(1000).delay(1000).fadeOut(500);
@@ -86,66 +114,24 @@ function validatePopUpForm() {
         dispalyMessage(message);
       
     }
-    // event.preventDefault();
+    
 
 }
 
+function validatePopUpFormUpdate(){
+    let x = document.getElementById("quantity-update").value;
+    let max = document.getElementById("quantity-update").max;
+    console.log(max)
+    
+    message ='المخزون غير كافي '
+    if (x > max) {
+        dispalyMessage(message);
+      
+    }
+}
 
+    
 
-    
-    
-    
-    
-//     else
-//     {
-//             $('#addToCartForm').submit(function(e) {
-            
-               
-          
-//                     e.preventDefault(); // Prevent the default form submission
-//                     var  data = {
-//                         quantity: $('#quantity').val(),
-//                         main_pro_id: $('#product_id').val(),
-//                         product_id: $('#product_branches_id').val(),
-                        
-//                     };
-//                     console.log('after'+ data);
-//                     $.ajax({
-//                         type: 'POST',
-//                         url: 'add-to-cart',
-//                         data: data,
-                    
-//                         success: function(response) {
-//                             $('#add-message')
-//                             .removeClass('alert-danger')  
-//                             .addClass('alert-success')  
-//                             .text(response)      
-//                             .fadeIn(1000)        
-//                             .delay(1000)                
-//                             .fadeOut(1000);   
-//                             $('#add-to-cart-btn').prop('disabled', true);
-
-//                             // Set a timeout to enable the button after 5 seconds
-//                             setTimeout(function () {
-//                                 $('#add-to-cart-btn').prop('disabled', false);
-//                             }, 6000);
-//                             data.quantity=''
-//                             data.main_pro_id=''
-//                             data.product_id=''
-//                         },
-//                         error: function(errorThrown) {
-//                             console.error('Error:', errorThrown);
-//                             console.log(data)
-                        
-
-//                         }
-    
-//                     });
-//                 });
-//     }
-// }          
-                
-            // }
  
 // update quantity
 $(document).ready(function () {
