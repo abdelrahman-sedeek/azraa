@@ -135,7 +135,7 @@ class cartController extends Controller
             }
         
             // Check if the updated quantity exceeds the available stock in the cart
-            if ($availableQuantity - $totalQuantityInCart - $quantity < 0) {
+            if ($availableQuantity -  $quantity < 0) {
                 return back()->with('message', 'الكمية غير متاحة لا يمكنك تحديث العربة');
             }
         
