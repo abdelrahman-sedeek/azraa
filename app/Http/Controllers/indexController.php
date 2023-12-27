@@ -52,6 +52,7 @@ class indexController extends Controller
     ->where('carts.user_id', $user_id)
     ->select('carts.id', 'products.*', 'product_branches.*', 'carts.*')
     ->get();
+    // dd($cartItems);
 
     $query = DB::table('products')
         ->join('product_branches', 'products.id', '=', 'product_branches.product_id')
@@ -68,8 +69,10 @@ class indexController extends Controller
 
     $products = $query->paginate(10);
 
-    return view('home.subcategory', compact(['products', 'subcategory', 'category',' cartItems']));
+    return view('home.subcategory', compact(['products', 'subcategory', 'category','cartItems']));
 }
+
+
 public function single_product($product_id)
     {
         $user_id = auth()->id();

@@ -49,15 +49,15 @@
     <section class="Categorie product">
         <div class="container">
                  <div class="intro">
-                    <form method="GET">
-                        <input  id="search-input"  type="text" name="search" placeholder="ابحث عن منتج">
+                     <input   id="search"  type="text" name="search" placeholder="ابحث عن منتج">
+                    {{-- <form method="GET">
                         <input hidden id='cateogry-id-input'value="{{ $category->id }}" >
                         <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-                    </form>
+                    </form> --}}
                 </div>
 
                 
-            <div class="row" id="all-category-products">
+            <div class="row" id="offer-table">
                 @if ($products->isEmpty())
                     
                     <div class="col-md-12 text-center m-5">
@@ -90,7 +90,7 @@
                          </div>
                     @endforeach
                 @endif
-                {{-- <div id="search-results"></div> --}}
+              
                     @if ($products->total() > 10)
                     <div class="Pagination">
                     {{ $products->links('pagination::custom') }} 

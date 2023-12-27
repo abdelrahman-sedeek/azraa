@@ -29,12 +29,10 @@
     <section class="Categorie product">
         <div class="container">
                  <div class="intro">
-                    <form action="{{ route('subcategory', ['category_id' => $category->id, 'subcategory_id' => $subcategory->id]) }}" method="GET">
-                        <input type="text" name="search" placeholder="ابحث عن منتج">
-                        <button type="submit" ><i class="fa-solid fa-magnifying-glass"></i></button>
-                    </form>
+                    <input   id="search"  type="text" name="search" placeholder="ابحث عن منتج">
+                  
                 </div>
-        <div class="row">
+        <div class="row" id="offer-table">
             @if ($products->isEmpty())
                 
                 <div class="col-md-12 text-center m-5">

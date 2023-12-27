@@ -1,11 +1,12 @@
 <?php
 
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\indexController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\cartController;
+use App\Http\Controllers\indexController;
 use App\Http\Controllers\categoryController;
 use App\Http\Controllers\checkoutController;
+use App\Http\Controllers\SearchajaxproController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,6 +46,8 @@ Route::middleware('userStatus')->group(function () {
     Route::post('add-order',[checkoutController::class, 'add'])->name('addOrder');
     Route::get('checkout',[checkoutController::class,'show'])->name('checkout');
     
+    // search
+    Route::get('search',[SearchajaxproController::class,'search']);
 });
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 

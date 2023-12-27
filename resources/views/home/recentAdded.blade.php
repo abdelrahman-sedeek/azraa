@@ -24,13 +24,13 @@
     <section class="Categorie product">
         <div class="container">
                  <div class="intro">
-                    <form action="{{ route('allOffer') }}" method="GET">
+                     <input  id="search" type="text" name="search" placeholder="ابحث عن منتج">
+                    {{-- <form action="{{ route('allOffer') }}" method="GET">
                         
-                        <input type="text" name="search" placeholder="ابحث عن منتج">
                         <button type="submit" ><i class="fa-solid fa-magnifying-glass"></i></button>
-                    </form>
+                    </form> --}}
                 </div>
-        <div class="row">
+        <div class="row" id="offer-table">
             @if ($recentAdded->isEmpty())
                 
                 <div class="col-md-12 text-center m-5">

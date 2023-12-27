@@ -10,7 +10,7 @@
  use Illuminate\Support\Facades\Hash;
  use Illuminate\Foundation\Auth\User as Authenticatable;
  use Illuminate\Validation\Rule;
-
+ use Stevebauman\Location\Facades\Location;
 class AuthController extends Controller 
 {
     public function register()
@@ -20,6 +20,7 @@ class AuthController extends Controller
  
     public function registerPost(Request $request)
     {
+       
         $customMessages = [
             'mobile.required' => 'هذا الحقل مطلوب.',
             'mobile.numeric' => 'ادخل 11 رقم',
@@ -57,12 +58,14 @@ class AuthController extends Controller
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
-    
+        $ip = request()->ip();
+        $data = \Location::get($ip);
+        dd($data);
         // Validation passed, proceed to save data
         $user = new User();
         $user->name = $request->name;
-        $user->longitude = 0;
-        $user->latitude = 0;
+        $user->longitude = $data->longitude;
+        $user->latitude = $data->latitude;
         $user->mobile = $request->mobile;
         $user->email = $request->mobile . '@zahcode.com';
         $user->password = Hash::make($request->password);

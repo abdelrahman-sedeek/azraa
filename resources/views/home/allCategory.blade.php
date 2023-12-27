@@ -12,7 +12,7 @@
         </ul>
     </div>    
     </section>
-    <
+  
         
    
 
@@ -24,13 +24,13 @@
     <section class="Categorie product">
         <div class="container">
                  <div class="intro">
-                    <form action="{{ route('allCategory') }}" method="GET">
+                     <input type="text"  id="search" name="search" placeholder="ابحث عن تصنيف">
+                    {{-- <form action="{{ route('allCategory') }}" method="GET">
                         
-                        <input type="text" name="search" placeholder="ابحث عن تصنيف">
                         <button type="submit" ><i class="fa-solid fa-magnifying-glass"></i></button>
-                    </form>
+                    </form> --}}
                 </div>
-        <div class="row">
+        <div class="row" id="offer-table">
             @if ($allCategory->isEmpty())
                 
                 <div class="col-md-12 text-center m-5">
