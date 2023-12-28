@@ -60,12 +60,14 @@ class AuthController extends Controller
         }
         $ip = request()->ip();
         $data = \Location::get($ip);
-        dd($data);
+        //   dd($data);
         // Validation passed, proceed to save data
         $user = new User();
         $user->name = $request->name;
-        $user->longitude = $data->longitude;
-        $user->latitude = $data->latitude;
+        // $user->longitude = $data->longitude;
+        // $user->latitude = $data->latitude;
+        $user->longitude = 0;
+        $user->latitude = 0;
         $user->mobile = $request->mobile;
         $user->email = $request->mobile . '@zahcode.com';
         $user->password = Hash::make($request->password);

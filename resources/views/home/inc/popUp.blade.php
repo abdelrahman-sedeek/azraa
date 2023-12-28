@@ -164,19 +164,36 @@
 
 
     </script>
-    <script type="text/javascript">
-        $('#search').on('keyup',function(){
-        $value=$(this).val();
-        $.ajax({
-        type : 'get',
-        url : '{{URL::to('search')}}',
-        data:{'search':$value},
-        success:function(data){
-        $('#offer-table').html(data);
+<script type="text/javascript">
+    $('#search').on('keyup',function(){
+        $value = $(this).val();
+
+  
+        if ($value.trim() === '') {
+            // If empty, hide the div
+            $('#offer-table').hide();
+            $('#main-table').show();
+            return;
         }
+        else{
+            // If not empty, show the div
+            $('#offer-table').show();
+            $('#main-table').hide();
+       
+        $.ajax({
+            type: 'get',
+            url: '{{URL::to('search')}}',
+            data: {'search': $value},
+            success: function(data){
+                // Show the div and update its content
+                $('#offer-table').show().html(data);
+                
+            }
         });
-        })
-        </script>
+        }
+    });
+</script>
+
        
     </body>
     </html>

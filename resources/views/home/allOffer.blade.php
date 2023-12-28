@@ -30,7 +30,8 @@
                         <button type="submit" ><i class="fa-solid fa-magnifying-glass"></i></button>
                     </form> --}}
                 </div>
-        <div class="row" id="offer-table">
+                <div class="row" id="offer-table"></div>
+        <div class="row" id="main-table">
             @if ($offers->isEmpty())
                 
                 <div class="col-md-12 text-center m-5">
