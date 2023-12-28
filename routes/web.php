@@ -42,7 +42,7 @@ Route::middleware('userStatus')->group(function () {
     Route::post('delete-cart-ajax/{id}',[cartController::class, 'delete'])->name('deleteCart');
     Route::post('update-cart',[cartController::class, 'update'])->name('updateCart');
     route::get('/single-product/{product_id}',[indexController::class ,'single_product'])->name('single_product');
-    route::get('/home',[indexController::class ,'index'])->name('index');
+    route::get('/',[indexController::class ,'index'])->name('index');
     Route::post('add-order',[checkoutController::class, 'add'])->name('addOrder');
     Route::get('checkout',[checkoutController::class,'show'])->name('checkout');
     
