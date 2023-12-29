@@ -13,66 +13,69 @@ class cartController extends Controller
 {
     public function add(Request $request){
         // $cart= new Cart();
-       
-        $data = $request->all();
-      
-        $quantity = $data['quantity'];
-        $productId = $data['main_pro_id'];
-        $product_branches_id = $data['product_id'];
-        $user_id = auth()->id();
+        try {
 
-        $product = Product::find($productId);
-        $productBranch = ProductBranch::find($product_branches_id);
-        // dd($productId);
-        $calcStock = $product->stock / $productBranch->measurement;
-      
-       
-        if($calcStock <= $product->total_allowed_quantity)
-        {
-            $availableQuantity = $calcStock;
-        }
-        else
-        {
-            $availableQuantity = $product->total_allowed_quantity;
-        }
-       
-        if ($quantity > $availableQuantity)
-        {
-            return back()->with('message', 'الكميه غير متاحه لا يمكنك اضافه هذا المنتج');
-        }
-                $cartItems = Cart::where('user_id', $user_id)
-            ->where('main_pro_id', $productId)
-            ->where('product_id', $product_branches_id)
-            ->get();
-
-        $totalQuantityInCart = $cartItems->sum('quantity');
-        // dd($availableQuantity-$totalQuantityInCart );
-        if($totalQuantityInCart!=null)
-        {
-            if($availableQuantity - $totalQuantityInCart - $quantity<0) {
-                return back()->with('message', 'الكميه غير متاحه لا يمكنك اضافه هذا المنتج');
+            $data = $request->all();
+          
+            $quantity = $data['quantity'];
+            $productId = $data['main_pro_id'];
+            $product_branches_id = $data['product_id'];
+            $user_id = auth()->id();
+    
+            $product = Product::find($productId);
+            $productBranch = ProductBranch::find($product_branches_id);
+            // dd($productId);
+            $calcStock = $product->stock / $productBranch->measurement;
+          
+           
+            if($calcStock <= $product->total_allowed_quantity)
+            {
+                $availableQuantity = $calcStock;
+            }
+            else
+            {
+                $availableQuantity = $product->total_allowed_quantity;
+            }
+           
+            if ($quantity > $availableQuantity)
+            {
+                throw new \Exception('الكمية غير متاحة لا يمكنك إضافة هذا المنتج');
+            }
+                    $cartItems = Cart::where('user_id', $user_id)
+                ->where('main_pro_id', $productId)
+                ->where('product_id', $product_branches_id)
+                ->get();
+    
+            $totalQuantityInCart = $cartItems->sum('quantity');
+            // dd($availableQuantity-$totalQuantityInCart );
+            if($totalQuantityInCart!=null)
+            {
+                if($availableQuantity - $totalQuantityInCart - $quantity<0) {
+                    throw new \Exception('الكمية غير متاحة لا يمكنك إضافة هذا المنتج');
+        
+                }
     
             }
-
+    
+            $cart=Cart::create([
+    
+                'user_id'=>$user_id,
+                'main_pro_id'=>$productId,
+                'product_id'=>$product_branches_id,
+                'quantity'=>$quantity,
+                'quantity_final'=>$quantity,
+             
+            ]);
+            $cart->save();
+            return response()->json(['message' => 'تم الإضافة في العربة'], 200);
         }
-
-        $cart=Cart::create([
-
-            'user_id'=>$user_id,
-            'main_pro_id'=>$productId,
-            'product_id'=>$product_branches_id,
-            'quantity'=>$quantity,
-            'quantity_final'=>$quantity,
-         
-        ]);
-        $cart->save();
-        return redirect()->back()->with('message', 'تم الاضافة في العربة');
-        // if($request->ajax())
-        // {
-        // // return response('تم الاضافة بنجاح');
-        // }
-        
+     catch (\Exception $e) {
+        return response()->json(['error' => $e->getMessage()], 400);
     }
+    
+    }
+
+    
     public function Show(){
         $user_id = auth()->id();
         
@@ -129,7 +132,7 @@ class cartController extends Controller
                 ->where('main_pro_id', $productId)
                 ->sum('quantity');
         
-            // Check if the updated quantity exceeds the available stock
+         
             if ($quantity > $availableQuantity) {
                 return back()->with('message', 'الكمية غير متاحة لا يمكنك تحديث العربة');
             }

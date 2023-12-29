@@ -24,29 +24,26 @@
                         <span id='unit'> </span>
                         <span id="stock"> </span>
                     </li>
-                    <form  action="{{ route('addToCart') }}" method="POST" id="addToCartForm" >
-                        @csrf
+                    <form  id="addToCartForm">
+                        
+                        <ul>
+                            <li class="product_Quntity">
+                                <a type="button" id="up">+</a>
+                                <input type="number" name='quantity' value="1" id="quantity">
+                                <a type="button" id="down">-</a>
+                            </li>
+                        </ul>
                     
-                        <li class="product_Quntity">
-                            <a type="button" id="up"  >+</a>
-                            <input type="number"    name='quantity' value="1"  id="quantity">
-                            
-                            <a type="button" id="down" >-</a>
-                        </li>
-                    </ul>
+                        <input id="product_branches_id" value="" hidden name='product_id'>
+                        <input id="product_id" value="" hidden name='main_pro_id'>
+                    </div>
+                    <p id="error-message" style="color: red;"></p>
+                    <p id="add-message" style="color: green;" class="mt-3"></p>
                 
-                    
-                    <input id="product_branches_id" value="" hidden  name='product_id'>
-                    <input id="product_id"         value="" hidden   name='main_pro_id'>
-                    <p id="error-message" style="color: red;"></p>   
-                    <p id="add-message" style="color: green;" class="  mt-3"></p>
-            
-            </div>   
-            
-    
-         <button type="submit"   id="add-to-cart-btn" onclick="validatePopUpForm()"   class="add-to-cart"> اضف الي العربه <i class="fa-solid fa-cart-shopping"></i> </button>
-    </form>
-        </div>
+                    <div class="modal-footer">
+                        <button type="button" id="add-to-cart-btn" onclick="validatePopUpForm()" class="add-to-cart">اضف الي العربه <i class="fa-solid fa-cart-shopping"></i></button>
+                    </div>
+                </form>
     </div>
     </div>
     
