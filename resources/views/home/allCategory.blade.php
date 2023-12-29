@@ -41,13 +41,14 @@
                 </div>
             @else
                 @foreach ($allCategory as $product) 
-                    
+               
                     <div class="ssaa ">
                         <div class="box">
                           
                             
                                 <img src="{{ asset(''.$product->image) }}" alt="">
-                                <a href="{{ route('category', ['category_id' => $product->id]) }}">{{ $product->name }}</a>
+                              
+                                <a href="{{ route('category', ['category_id' => $product->id]) }}">{{ $modifiedCategoryName  }}</a>
                                 
                          
                         </div>

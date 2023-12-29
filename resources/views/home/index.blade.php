@@ -17,10 +17,13 @@
         </div>
         <div class="owl-carousel owl-theme" id="slider_1">
            @foreach ($category as $cat )
+           @php
+           $modifiedCategoryName = str_replace(['-', '/', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'], '', $cat->name);
+       @endphp
             <div class="item">
                 <a href="{{ route('category', ['category_id' => $cat->id]) }}">
                     <img src="{{ asset(''.$cat->image) }}" alt="">
-                    <h3>{{ $cat->name }}</h3>
+                    <h3>{{ $modifiedCategoryName }}</h3>
                 </a>
             </div>
                
@@ -91,23 +94,23 @@
                 
                 @foreach ($recentProducts as $product )
                     <div class="item"   
-                        data-product-id="{{ $product->product_id }}"
-                        data-product-branch-id="{{ $product->id }}"
-                        data-product-name="{{ $product->name }}"
-                        data-product-image="{{ asset('' . $product->image) }}"
-                        data-product-price="{{ $product->price }}"
-                        data-product-discounted-price="{{ $product->discounted_price }}"
-                        data-product-unit="{{ $product->unit }}"
-                        data-product-discrption="{{ $product->description }}"
-                        data-product-quantity="{{ $product->total_allowed_quantity }}"
-                        data-product-stock="{{ $product->stock}}"
-                        data-product-measurement="{{ $product->measurement}}">
+                    data-product-id="{{ $product->product_id }}"
+                    data-product-branch-id="{{ $product->id }}"
+                    data-product-name="{{ $product->name }}"
+                    data-product-image="{{ asset('' . $product->image) }}"
+                    data-product-price="{{ $product->price }}"
+                    data-product-discounted-price="{{ $product->discounted_price }}"
+                    data-product-unit="{{ $product->unit }}"
+                    data-product-discrption="{{ $product->description }}"
+                    data-product-quantity="{{ $product->total_allowed_quantity }}"
+                    data-product-stock="{{ $product->stock}}"
+                    data-product-measurement="{{ $product->measurement}}">
                     
                     <div class="box">
                         
                         <img src="{{ asset('' .$product->image ) }}" alt="">
                         <a href="{{ route('single_product',['product_id'=>$product->product_id]) }}">{{ $product->name }}</a>
-                            <span> {{ $product->price }}جم بدلا من <del>{{ $product->discounted_price }}جم</del> </span>
+                            <span> {{ $product->discounted_price }}جم بدلا من <del>{{ $product->price }}جم</del> </span>
                             <button onclick="addtoChose()"   class="add-to-cart"> اضف الي العربه <i class="fa-solid fa-cart-shopping"></i> </button>
                                                     </div>
                     </div>

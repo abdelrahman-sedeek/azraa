@@ -6,7 +6,10 @@
         <ul>
             <li> <a href="{{ route('index') }}">الرئيسيه</a> </li>
             <li> / </li>
-            <li> <a href="{{ route('category',['category_id'=>$category->id]) }}">{{ $category->name }}</a> </li>
+            @php
+                    $finalName = str_replace(['-', '/', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'], '', $category->name );
+            @endphp
+            <li> <a href="{{ route('category',['category_id'=>$category->id]) }}">{{ $finalName }}</a> </li>
             
             <li> / </li>
             <li> <a href="#">{{ $subcategory->name }}</a> </li>

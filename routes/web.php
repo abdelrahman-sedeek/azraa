@@ -48,6 +48,7 @@ Route::middleware('userStatus')->group(function () {
     
     // search
     Route::get('search',[SearchajaxproController::class,'search']);
+    Route::get('contact-us',[indexController::class,'contactUs'])->name('contactUs');
 });
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 

@@ -48,14 +48,14 @@ class categoryController extends Controller
         ->where('carts.user_id', $user_id)
         ->select('carts.id', 'products.*', 'product_branches.*', 'carts.*')
         ->get();
-        $query = Category::query();
-        if ($request->has('search')) {
-            $search = $request->input('search');
-            $query->where('categories.name', 'like', '%' . $search . '%');
-            
-        }
-        
-        $allCategory= $query->paginate(15);
+    
+    $query = Category::query();
+    
+    
+    $allCategory = $query->paginate(15);
+    
+    
+   
     
         return view('home.allCategory',compact(['allCategory','cartItems']));
     }

@@ -126,19 +126,20 @@ public function single_product($product_id)
         ->where('carts.user_id', $user_id)
         ->select('carts.id', 'products.*', 'product_branches.*', 'carts.*')
         ->get();
-        $query = DB::table('products')
+        $recentAdded = DB::table('products')
         ->join('product_branches', 'products.id', '=', 'product_branches.product_id')
         ->select('*')
-        ->where('products.status', '=', 1)
-        ->orderBy('products.date_added', 'desc');
-        if ($request->has('search')) {
-            $search = $request->input('search');
-            $query->where('products.name', 'like', '%' . $search . '%');
-            
-        }
-        $recentAdded= $query->take(20)->get();
+        ->orderBy('products.date_added', 'desc')
+        ->take(20)->where('products.status','=',1)
+        ->get();
+      
+      
         // dd($recentAdded);
        
             return view('home.recentAdded',compact(['recentAdded','cartItems']));
+    }
+    
+    public function contactUs(){
+        return view('home.contactUs');
     }
 }

@@ -49,7 +49,7 @@
         @if (Auth()->user())
         <a href="{{ route('allCategory')  }}">التصنيفات</a>
         <a href="{{ route('showCart') }}">العربه</a>
-        <a href="./contact_us.php">تواصل معنا</a>
+        <a href="{{ route('contactUs') }}">تواصل معنا</a>
         <form action="{{ route('logout') }}" method="POST" style="display: inline;"  >
             @csrf
             <a  href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();" >تسجيل خروج</a>

@@ -172,17 +172,16 @@ $(document).ready(function () {
         updateQuantity(-1);
     });
 
-    // Your JavaScript code
+    
     function updateQuantity(increment) {
         var currentQuantity = parseInt($(`#quantityCart`+cartId).val());
         console.log(currentQuantity);
         var newQuantity = currentQuantity + increment;
 
-        // Ensure the quantity doesn't go below 1
+     
         newQuantity = Math.max(1, newQuantity);
 
-        // Update the input field with the new quantity
-        
+         
        var finalQuantity= $(`#quantityCart`+cartId).val(newQuantity);
         // Check if the value has changed
         if (newQuantity !== originalQuantity) {
@@ -226,33 +225,33 @@ $(document).ready(function () {
     }
 });
 
-$('#down').on('click', function(){
-    value=$(this).val()
-    console.log(value)
+// $('#down').on('click', function(){
+//     value=$(this).val()
+//     console.log(value)
     
-    var formData = {
-        // quantity: finalQuantity,
-        id:value,
+//     var formData = {
+//         // quantity: finalQuantity,
+//         id:value,
        
       
-    };
+//     };
 
-    $.ajax({
-        type: 'POST',
-        url: 'update-cart', 
-        data: formData,
-        success: function (response) {
-            console.log(response);
-        },
-        error: function (error) {
-            // Handle error response
-            console.error(error);
-        }
-    });
+//     $.ajax({
+//         type: 'POST',
+//         url: 'update-cart', 
+//         data: formData,
+//         success: function (response) {
+//             console.log(response);
+//         },
+//         error: function (error) {
+//             // Handle error response
+//             console.error(error);
+//         }
+//     });
     
 
 
-})
+// })
 
 
 // show cart
