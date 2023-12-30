@@ -9,11 +9,10 @@
                 <div class="col-lg-4">
                     <ul class="links">
                         <h3>روابطنا</h3>
-                        <li> <a href="./index.html">الرئيسيه</a> </li>
-                        <li> <a href="./categories.html">التصنيفات</a> </li>
-                        <li> <a href="./categories.html">المنتجات</a> </li>
-                        <li> <a href="./Cart.html">العربه</a> </li>
-                        <li> <a href="./contact_us.html">تواصل معنا</a> </li>
+                        <li> <a href="{{ route('index') }}">الرئيسيه</a> </li>
+                        <li> <a href="{{ route('allCategory') }}">التصنيفات</a> </li>
+                       <li> <a href="{{ route('showCart') }}">العربه</a> </li>
+                        <li> <a href="{{ route('contactUs') }}">تواصل معنا</a> </li>
                     </ul>
                 </div>
 

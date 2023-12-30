@@ -132,7 +132,9 @@
                     $('#add-message').text(response.message).fadeIn(1000).delay(1000).fadeOut(500);
                     $('#error-message').text('');
                     $('#add-to-cart-btn').prop('disabled', true);
-                    Add_to_Cart_chose_container.classList.remove("Show_Cart_Chose").delay(2000).fadeIn(5000);
+                        setTimeout(function() {
+                         Add_to_Cart_chose_container.classList.remove("Show_Cart_Chose");
+                        }, 2000);   
                     // Enable the button after 3 seconds
                     setTimeout(function() {
                         $('#add-to-cart-btn').prop('disabled', false);
