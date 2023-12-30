@@ -47,7 +47,7 @@
                     
                     <div class="ssaa ">
                         <div class="box item"
-                        data-product-id="{{ $product->product_id }}"
+                        d data-product-id="{{ $product->product_id }}"
                         data-product-branch-id="{{ $product->id }}"
                         data-product-name="{{ $product->name }}"
                         data-product-image="{{ asset('' . $product->image) }}"
@@ -62,7 +62,7 @@
                             <img src="{{ asset(''.$product->image) }}" alt="">
                             <a href="{{ route('single_product',['product_id'=>$product->product_id]) }}">{{ $product->name }}</a>
                             <span> {{ $product->discounted_price }}جم بدلا من <del>{{ $product->price }}جم</del> </span>
-                            <button onclick="addtoChose()"  class="add-to-cart"> اضف الي العربه <i class="fa-solid fa-cart-shopping"></i> </button>
+                            <button onclick="addtoChose()"   class="add-to-cart"> اضف الي العربه <i class="fa-solid fa-cart-shopping"></i> </button>
                         </div>
                     </div>    
                     {{-- @dd(count($products)); --}}

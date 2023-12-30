@@ -111,34 +111,42 @@
     <script src="{{asset('/js/ajax.js')}}"></script>
     {{-- <script src="{{asset('/js/map.js')}}"></script> --}}
     {{-- <script src="{{asset('/js/cart.js')}}"></script> --}}
-    <script type="text/javascript"></script>
+
     
     <script>
-    //     $(document).ready(function () {
-    //     $('#search-input').on('keyup', function () {
-    //         var search = $(this).val();
-            
-    //         $.ajax({
-    //             type: 'GET',
-    //             url: '{{URL::to('/search-category')}}',
-    //             data: { search: search 
-                
-    //             },
-    
-    //             success: function (data) {
-    //                 // Update the UI with the search results
-    //                 console.log('hi');
-    //                 $('#search-results').html(data.output);
-    //             },
-    //             error: function (error) {
-    //                 console.log( data.output);
-    //             }
-    //         });
-    //     });
-    // });
-    
-            
-            
+      
+      function validatePopUpForm() {
+
+
+        let x = document.getElementById("quantity").value;
+        let max = document.getElementById("quantity").max;
+        console.log(x)
+
+       
+
+            $.ajax({
+                type: 'POST',
+                url: '{{ route('addToCart') }}',
+                data: $('#addToCartForm').serialize(),
+                success: function(response) {
+                    // Handle success
+                    $('#add-message').text(response.message).fadeIn(1000).delay(1000).fadeOut(500);
+                    $('#error-message').text('');
+                    $('#add-to-cart-btn').prop('disabled', true);
+
+                    // Enable the button after 3 seconds
+                    setTimeout(function() {
+                        $('#add-to-cart-btn').prop('disabled', false);
+                    }, 3000);
+                },
+                error: function(xhr) {
+                    // Handle error
+                    $('#error-message').text(xhr.responseJSON.error).fadeIn(1000).delay(1000).fadeOut(500);
+                    $('#add-message').text('');
+                }
+            });
+         }
+        
             
     $(document).ready(function(){
         $("#up").on('click', function(){
@@ -155,10 +163,11 @@
                 quantityElement.val(currentValue - 1);
             }
         });
+        
     });
     
 
-
+    
 
     </script>
 <script type="text/javascript">

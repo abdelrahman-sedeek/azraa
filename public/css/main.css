@@ -24,7 +24,7 @@
 
 }
 .single_pro .container img{
-  height: 10px;
+  height: 410px;
 }
 ::-webkit-scrollbar-track {
   background-color: transparent;
@@ -387,8 +387,9 @@ background-color: var(--bgColor);
   text-align: center;
 }
 .product .box img{
+  background-color: #2c7ef3;
   border-radius: 5px;
-  padding: 25px;
+  padding: 0;
   max-height: 255px;
   min-height: 255px;
 }

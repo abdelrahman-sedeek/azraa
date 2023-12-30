@@ -41,14 +41,16 @@
                 </div>
             @else
                 @foreach ($allCategory as $product) 
-               
+                @php
+                $finalName = str_replace(['-', '/', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'], '', $product->name );
+                 @endphp
                     <div class="ssaa ">
                         <div class="box">
                           
                             
                                 <img src="{{ asset(''.$product->image) }}" alt="">
                               
-                                <a href="{{ route('category', ['category_id' => $product->id]) }}">{{ $modifiedCategoryName  }}</a>
+                                <a href="{{ route('category', ['category_id' => $product->id]) }}">{{ $finalName  }}</a>
                                 
                          
                         </div>

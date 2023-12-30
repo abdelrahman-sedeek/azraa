@@ -68,7 +68,7 @@
                         
                     <div class="ssaa ">
                             <div class="box item" 
-                            data-product-id="{{ $product->product_id }}"
+                            d data-product-id="{{ $product->product_id }}"
                             data-product-branch-id="{{ $product->id }}"
                             data-product-name="{{ $product->name }}"
                             data-product-image="{{ asset('' . $product->image) }}"

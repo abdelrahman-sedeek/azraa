@@ -73,9 +73,7 @@
                                 {{-- <input type="hidden" id="product_branches_id" name="main_pro_id" value="{{$item->main_pro_id }}"> --}}
                                 <input type="hidden"id="cart_id" name="product_id" value="{{ $item->id }}">
                                 <input type="hidden" id="final-stock{{ $item->id }}" name="final-stock" value="{{$finalStock }}">
-                                <a type="button" onclick="up" value="{{ $item->id }} id="up{{ $item->id }}"  >+</a>
-                                <input type="number"  min="1" name='quantity' value="{{ $item->quantity }}"  id="quantityCart{{$item->id}}">    
-                                <a type="button" value="{{ $item->id}}" id="down" >-</a>
+                                <p>{{ $item->quantity }} </p>
                                 <p id="cart-message{{ $item->id }}" style="color: red;"></p> 
 
                             </form>
