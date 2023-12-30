@@ -48,8 +48,9 @@ class SearchajaxproController extends Controller
                                     
                             </div>
                          </div>';    
+                       
                             }
-                        
+
                         return Response($output);
     
                      }                    

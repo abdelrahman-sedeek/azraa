@@ -34,6 +34,8 @@ class checkoutController extends Controller
             'user_id' => $user_id,
             'total_discounted_price' => $discount,
             'total_price' => $total,
+            'status' => 1,
+           
         ]);
 
         foreach ($cartItems as $cartItem) {

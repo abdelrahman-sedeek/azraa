@@ -754,6 +754,7 @@ background-color: var(--bgColor);
 /* cart */
 .cart img{
   width: 100px !important;
+  height: 160px;
 }
 .cart .Qunte{
   display: flex;
