@@ -56,8 +56,8 @@
                     </form> --}}
                 </div>
 
-                
-            <div class="row" id="offer-table">
+                <div class="row" id="offer-table"></div>
+            <div class="row" id="main-table">
                 @if ($products->isEmpty())
                     
                     <div class="col-md-12 text-center m-5">

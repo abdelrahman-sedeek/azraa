@@ -30,9 +30,7 @@
                         <button type="submit" ><i class="fa-solid fa-magnifying-glass"></i></button>
                     </form> --}}
                 </div>
-                <div class="row" id="offer-table">
-
-                </div>
+                <div class="row" id="offer-table"></div>
         <div class="row" id="main-table">
             @if ($allCategory->isEmpty())
                 

@@ -46,8 +46,7 @@ class checkoutController extends Controller
             $product = Product::find($productId);
             $productBranch = ProductBranch::find($productBranchId);
 
-            // Check if there is enough stock
-            if ($quantity * $productBranch->measurement > $product->stock) {
+           if ($quantity * $productBranch->measurement > $product->stock) {
                 $unavailableProducts[] = $product->name;
                 if (!empty($unavailableProducts)) {
                     $unavailableProductsList = implode(', ', $unavailableProducts);
@@ -73,21 +72,21 @@ class checkoutController extends Controller
                 'total_seller_price' => $productBranch->seller_price * $cartItem->quantity,
                 'discounted_price' => $productBranch->discounted_price,
                 'total_discounted_price' =>  $productBranch->discounted_price * $cartItem->quantity,
-                'quantity' => $cartItem->quantity, // You may need to adjust this based on your data model
+                'quantity' => $cartItem->quantity, 
             ]);
         }
 
        
 
-        // Commit the transaction
+  
         DB::commit();
 
-        // Clear the cart after successful order
+      
         Cart::where('user_id', $user_id)->delete();
 
         return redirect()->back()->with('message', 'تم اكمال الطلب بنجاح');
     } catch (\Exception $e) {
-        // Rollback the transaction in case of an exception
+
         DB::rollBack();
 
         return redirect()->back()->with('message', 'حدث خطأ أثناء معالجة الطلب. ' . $e->getMessage() . ' يرجى المحاولة مرة أخرى.');
